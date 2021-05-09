@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: transfertab
-      url: core.html
+      url: /core
     output: web
     title: transfertab
   output: web
