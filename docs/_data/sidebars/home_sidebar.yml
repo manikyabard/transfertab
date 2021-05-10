@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: transfertab
-      url: /intro
+      title: Core
+      url: /core
     output: web
     title: transfertab
   output: web
