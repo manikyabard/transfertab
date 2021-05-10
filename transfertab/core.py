@@ -4,7 +4,7 @@ __all__ = ['TabTransfer']
 
 # Cell
 class TabTransfer:
-    def __init__(self, old_learner, new_learner, cat_names_to_transfer):
+    def __init__(self, old_learner, new_learner):
         self.old_cat_names = old_learner.dls.cat_names
         self.old_all_classes = old_learner.dls.classes
         self.old_learner = old_learner
@@ -13,10 +13,9 @@ class TabTransfer:
         self.new_all_classes = new_learner.dls.classes
         self.new_learner = new_learner
 
+
+    def transfer(self, cat_names_to_transfer, verbose=False):
         self.transfer_list = cat_names_to_transfer
-
-
-    def transfer(self):
         for curr_cat in self.transfer_list:
             if not (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
                 continue
@@ -44,7 +43,7 @@ class TabTransfer:
 #                 sitch = 3
 
             weights_mean = self.old_learner.model.embeds[old_cat_idx].weight.mean(0)
-            print(f'mean is {weights_mean} for {self.old_learner.model.embeds[old_cat_idx].weight}')
+            if verbose: print(f'mean is {weights_mean} for {self.old_learner.model.embeds[old_cat_idx].weight}')
 
 #             switch(sitch):
 #                 case 1:
@@ -53,20 +52,20 @@ class TabTransfer:
 
             for new_curr_class in new_curr_classes:
                 new_curr_class_idx = new_curr_classes.o2i[new_curr_class]
-                print(f"{new_curr_class_idx}, {type(new_curr_class_idx)}")
+                if verbose: print(f"{new_curr_class_idx}, {type(new_curr_class_idx)}")
 
                 if new_curr_class in old_curr_classes:
                     old_curr_class_idx = old_curr_classes.o2i[new_curr_class]
-                    print(f'Transferring weights for class {new_curr_class}, cat {curr_cat} from previous weights')
-                    print(f"old weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
+                    if verbose: print(f'Transferring weights for class {new_curr_class}, cat {curr_cat} from previous weights')
+                    if verbose: print(f"old weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
                     tempwgt1 = self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]
                     tempwgt2 = self.old_learner.model.embeds[old_cat_idx].weight[old_curr_class_idx, :]
                     self.new_learner.model.embeds[new_cat_idx].weight.data[new_curr_class_idx, :] = self.old_learner.model.embeds[old_cat_idx].weight[old_curr_class_idx, :].detach().clone()
                     self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :].required_grad = True
-                    print(f"new weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
+                    if verbose: print(f"new weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
                 else:
-                    print(f'Transferring weights for class {new_curr_class}, cat {curr_cat} using mean')
-                    print(f"old weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
+                    if verbose: print(f'Transferring weights for class {new_curr_class}, cat {curr_cat} using mean')
+                    if verbose: print(f"old weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
                     self.new_learner.model.embeds[new_cat_idx].weight.data[new_curr_class_idx, :] = weights_mean
                     self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :].required_grad = True
-                    print(f"new weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
+                    if verbose: print(f"new weight for class is {self.new_learner.model.embeds[new_cat_idx].weight[new_curr_class_idx, :]}")
