@@ -10,8 +10,11 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: Title
+      url: /embedformat
+    - output: web,pdf
       title: Core
-      url: /core
+      url: /transfer
     output: web
     title: transfertab
   output: web

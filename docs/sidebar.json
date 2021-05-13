@@ -1,6 +1,7 @@
 {
   "transfertab": {
     "Overview": "/",
-    "Core": "/core"
+    "Title": "/embedformat",
+    "Core": "/transfer"
   }
 }
