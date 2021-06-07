@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Title
-      url: /embedformat
+      url: /ExractUtils
     - output: web,pdf
       title: Core
       url: /transfer

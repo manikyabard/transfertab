@@ -2,9 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"TabTransfer": "01_transfer.ipynb"}
+index = {"extractembeds": "00_ExractUtils.ipynb",
+         "TabTransfer": "01_transfer.ipynb"}
 
-modules = ["core.py"]
+modules = ["utils.py",
+           "core.py"]
 
 doc_url = "https://manikyabard.github.io/transfertab/"
 
