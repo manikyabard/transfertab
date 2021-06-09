@@ -11,10 +11,10 @@ entries:
       url: /
     - output: web,pdf
       title: Title
-      url: /ExractUtils
+      url: load_embeds.html
     - output: web,pdf
       title: Core
-      url: /transfer
+      url: transfer.html
     output: web
     title: transfertab
   output: web

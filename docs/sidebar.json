@@ -1,7 +1,7 @@
 {
   "transfertab": {
     "Overview": "/",
-    "Title": "/ExractUtils",
-    "Core": "/transfer"
+    "Title": "load_embeds.html",
+    "Core": "transfer.html"
   }
 }
