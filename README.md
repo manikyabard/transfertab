@@ -10,7 +10,7 @@
 
 We have two fastai learners `learn1` and `learn2`  created, with models having embedding layers for their categorical variables.
 
-```
+```python
 learn1, learn2, learn1.model
 ```
 
@@ -52,13 +52,13 @@ learn1, learn2, learn1.model
 
 For transferring the embeddings from `learn1` to `learn2`, we first instantiate the `TabTransfer` class with the learners and the categorical variables to transfer.
 
-```
+```python
 tabobj = TabTransfer(learn1, learn2)
 ```
 
 Now, we can just call the transfer function to start the process.
 
-```
+```python
 tabobj.transfer(["workclass"], verbose = True)
 ```
 
