@@ -1,8 +1,8 @@
 {
   "transfertab": {
     "Overview": "/",
-    "Title": "/ExractUtils",
-    "Core": "/transfer",
-    "Experiments with loading 01": "/load_tests"
+    "Title": "Meta-Extraction.html",
+    "Core": "transfer.html",
+    "Experiments with loading 01": "load_tests.html"
   }
 }
