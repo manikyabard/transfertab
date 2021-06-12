@@ -115,20 +115,6 @@ nb_path: "nbs/03_Meta-Extraction.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;, &#39;sex&#39;, &#39;education-num_na&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -195,10 +181,11 @@ nb_path: "nbs/03_Meta-Extraction.ipynb"
         <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
             <span class="n">cat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">cat_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">cat_list</span><span class="p">)</span>
+    <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;categories&#39;</span><span class="p">:</span><span class="n">cat_list</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cat_dict</span><span class="p">:</span>
         <span class="n">cat_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-        
-    <span class="k">return</span> <span class="n">cat_dict</span>
+    <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cat_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">meta</span>
 </pre></div>
 
     </div>
@@ -247,7 +234,16 @@ nb_path: "nbs/03_Meta-Extraction.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;workclass&#39;: [&#39; Private&#39;,
+<pre>{&#39;categories&#39;: [&#39;workclass&#39;,
+  &#39;education&#39;,
+  &#39;marital-status&#39;,
+  &#39;occupation&#39;,
+  &#39;relationship&#39;,
+  &#39;race&#39;,
+  &#39;sex&#39;,
+  &#39;native-country&#39;,
+  &#39;salary&#39;],
+ &#39;workclass&#39;: [&#39; Private&#39;,
   &#39; Self-emp-inc&#39;,
   &#39; Self-emp-not-inc&#39;,
   &#39; State-gov&#39;,

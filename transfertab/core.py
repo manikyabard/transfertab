@@ -22,9 +22,22 @@ class TabTransfer:
         self.old_all_classes = classes_dict # contains the cat variable with all its classes
         self.old_all_embeds = embed_dict # contains the cat variable with all its embeddings
 
-    def transfer(self, cat_names_to_transfer, verbose=False):
+    def mapping(self, cat_names_to_transfer):
         self.transfer_list = cat_names_to_transfer
+        mapping_dict = dict.fromkeys(self.transfer_list)
         for curr_cat in self.transfer_list:
+            if (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
+                mapping_dict[curr_cat] = curr_cat
+            else:
+                print(self.new_cat_names)
+                mapping_cat = input(f"What do you want to map {curr_cat} to : ")
+                mapping_dict[curr_cat] = mapping_cat
+        return mapping_dict
+
+
+    def transfer(self, mapping_dict, verbose=False):
+#         self.transfer_list = cat_names_to_transfer
+        for curr_cat in mapping_dict.values():
             if not (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
                 continue
             old_cat_idx = self.old_cat_names.index(curr_cat)

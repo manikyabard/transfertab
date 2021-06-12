@@ -144,26 +144,26 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>(Parameter containing:
- tensor([[-1.5184e-03, -7.1496e-03, -9.6997e-03, -7.1375e-03, -1.8106e-02,
-          -3.0497e-03],
-         [ 1.4365e-02, -5.4501e-03, -4.0899e-03,  1.6883e-03, -9.0649e-03,
-           1.7529e-04],
-         [-7.8978e-03,  9.8942e-03, -8.7569e-03, -2.1801e-03,  5.3743e-03,
-           5.0876e-03],
-         [ 1.4316e-03,  9.9742e-03,  1.2166e-02, -6.7172e-04,  6.5607e-03,
-          -9.9967e-03],
-         [-1.4267e-02, -6.8543e-03,  4.4413e-03,  1.0773e-02,  3.8300e-03,
-           3.7381e-03],
-         [ 3.6100e-03, -1.0196e-03, -1.1467e-02, -1.2446e-02,  1.9815e-04,
-           5.9060e-03],
-         [-5.1308e-05, -9.9837e-03, -1.0518e-02, -8.9132e-03,  2.4865e-03,
-          -2.9645e-03],
-         [ 7.5990e-04, -3.0851e-03, -2.9387e-03, -4.9918e-03, -1.4173e-02,
-          -1.8315e-03],
-         [-1.5551e-03,  9.7467e-03,  5.9534e-03,  1.1147e-02, -1.1841e-02,
-          -8.1780e-04],
-         [-1.2227e-03,  1.4325e-02, -2.0262e-03, -1.0725e-02, -3.6891e-03,
-          -2.7537e-03]], requires_grad=True),
+ tensor([[-5.6853e-03,  1.8688e-03,  1.4476e-02,  9.7890e-03,  1.4115e-02,
+           5.7125e-03],
+         [-9.1271e-03, -1.5946e-03,  5.6058e-03,  3.0356e-03,  2.5559e-03,
+          -1.2680e-02],
+         [-2.1623e-03, -4.1510e-05, -1.0180e-02,  1.3648e-02,  1.5476e-02,
+          -1.8098e-03],
+         [ 5.6572e-03,  1.5083e-02,  7.9600e-03, -7.3476e-04, -1.1631e-02,
+          -7.4402e-03],
+         [ 3.3497e-03, -3.0329e-03,  2.3689e-03, -3.3820e-03,  1.5509e-02,
+          -9.7973e-03],
+         [ 1.2162e-02,  1.0208e-02,  1.4835e-03,  8.3532e-03,  1.1189e-02,
+           9.2965e-04],
+         [ 8.5163e-03, -1.2888e-02,  8.2518e-03,  3.5525e-03,  4.3668e-03,
+           3.4388e-03],
+         [ 6.6009e-03, -5.5191e-03,  7.2820e-03,  1.3600e-02, -2.4659e-03,
+          -6.2848e-04],
+         [ 1.0715e-03, -3.1847e-03, -6.2840e-03, -6.0915e-03,  7.6644e-04,
+           4.6805e-03],
+         [ 1.5399e-02, -8.3873e-03, -8.9908e-03,  3.5097e-04, -7.0670e-03,
+           1.1123e-02]], requires_grad=True),
  torch.Size([10, 6]))</pre>
 </div>
 
@@ -209,9 +209,9 @@ nb_path: "nbs/01_transfer.ipynb"
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.373020</td>
-      <td>0.346422</td>
-      <td>0.837838</td>
+      <td>0.371636</td>
+      <td>0.351842</td>
+      <td>0.838298</td>
       <td>00:04</td>
     </tr>
   </tbody>
@@ -529,7 +529,7 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tabobj</span><span class="o">.</span><span class="n">transfer</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">],</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mapping_dict</span> <span class="o">=</span> <span class="n">tabobj</span><span class="o">.</span><span class="n">mapping</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -542,96 +542,117 @@ nb_path: "nbs/01_transfer.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Encountered an error for variable race: Make sure embeddings dimensions are same for [[-0.003057310124859214, -0.01121451798826456, 0.0006751518812961876, -0.0022854332346469164], [0.05106708034873009, -0.040885455906391144, 0.05320250615477562, -0.012832402251660824], [-0.005895806010812521, -0.018627915531396866, 0.017118563875555992, -0.023926209658384323], [0.006974412128329277, -0.014671240001916885, 0.042595550417900085, 0.004545277450233698], [0.01667597144842148, -0.025080526247620583, 0.04978727549314499, -0.03059406764805317], [-0.011430840007960796, 0.021843088790774345, -0.05483167991042137, 0.009506236761808395]] with size 6, and Embedding(8, 5) with size 5
+<pre>[&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;, &#39;sex&#39;, &#39;education-num_na&#39;]
+What do you want to map gender to : sex
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tabobj</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Encountered an error for variable race: Make sure embeddings dimensions are same for [[0.01424520742148161, 0.0019113835878670216, -0.011762626469135284, -0.011998647823929787], [0.03481021150946617, -0.03585974872112274, -0.003132576122879982, -0.014373430982232094], [-0.00021668781118933111, -0.02973216213285923, -0.01742439530789852, -0.00618526479229331], [0.05276366323232651, -0.0017447100253775716, -0.008110049180686474, -0.021954387426376343], [0.04621289297938347, -0.05134597048163414, -0.06927426904439926, -0.03336308151483536], [-0.016955429688096046, 0.020483478903770447, 0.028547359630465508, -0.010007286444306374]] with size 6, and Embedding(8, 5) with size 5
 Moving on to other cat vars
-mean is tensor([-4.3801e-04, -1.7851e-03, -8.0605e-05, -3.4863e-03, -8.5167e-03,
-         7.4557e-04]) for tensor([[-1.5122e-03, -7.1206e-03, -9.6603e-03, -7.1085e-03, -1.8033e-02,
-         -3.0373e-03],
-        [-1.8883e-02, -4.9310e-02,  2.3438e-02, -1.1464e-02, -2.6982e-02,
-         -1.5785e-03],
-        [ 4.1349e-02,  2.1057e-02, -5.7505e-02, -3.3724e-02,  5.3201e-02,
-          4.7953e-02],
-        [ 1.3505e-02,  2.2205e-02,  1.7375e-02,  6.5449e-03, -6.8122e-03,
-         -5.6957e-03],
-        [ 3.7275e-03, -1.8505e-02, -1.6402e-03,  1.8197e-02, -1.0030e-03,
-          7.8835e-03],
-        [ 1.9420e-03,  8.6775e-05,  8.2344e-04,  3.4259e-02,  2.7123e-02,
-         -1.6212e-02],
-        [ 6.7098e-02,  2.1276e-02, -7.0232e-02, -3.6847e-02,  4.0436e-02,
-          2.3149e-02],
-        [-4.8378e-02, -1.2042e-02,  4.5346e-02, -9.2270e-03, -7.4573e-02,
-          8.4785e-04],
-        [-4.4342e-02, -1.9307e-02,  3.3685e-02, -4.8446e-03, -4.8069e-02,
-         -3.5065e-02],
-        [-1.8885e-02,  2.3808e-02,  1.7563e-02,  9.3505e-03, -3.0455e-02,
-         -1.0788e-02]])
+mean is tensor([ 0.0036,  0.0035, -0.0027,  0.0065,  0.0021, -0.0059]) for tensor([[-0.0057,  0.0019,  0.0144,  0.0097,  0.0141,  0.0057],
+        [-0.0317,  0.0007,  0.0077,  0.0139, -0.0221, -0.0226],
+        [ 0.0533, -0.0063,  0.0469, -0.0314,  0.0574,  0.0322],
+        [ 0.0165,  0.0365, -0.0122,  0.0023, -0.0144, -0.0079],
+        [-0.0120,  0.0204,  0.0026, -0.0055,  0.0236, -0.0362],
+        [-0.0086,  0.0461,  0.0067, -0.0026,  0.0232, -0.0509],
+        [ 0.0619, -0.0427,  0.0406, -0.0403,  0.0576,  0.0453],
+        [ 0.0216, -0.0126, -0.0440,  0.0787, -0.0520,  0.0040],
+        [-0.0349, -0.0240, -0.0491,  0.0039, -0.0234, -0.0003],
+        [-0.0242,  0.0150, -0.0408,  0.0364, -0.0426, -0.0285]])
 0, &lt;class &#39;int&#39;&gt;
 Transferring weights for class #na#, cat workclass using mean
-old weight for class is tensor([-0.0054,  0.0008, -0.0176,  0.0005, -0.0066, -0.0125],
+old weight for class is tensor([ 0.0036,  0.0035, -0.0027,  0.0065,  0.0021, -0.0059],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-4.3801e-04, -1.7851e-03, -8.0605e-05, -3.4863e-03, -8.5167e-03,
-         7.4557e-04], grad_fn=&lt;SliceBackward&gt;)
+new weight for class is tensor([ 0.0036,  0.0035, -0.0027,  0.0065,  0.0021, -0.0059],
+       grad_fn=&lt;SliceBackward&gt;)
 1, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  ?, cat workclass from previous weights
-old weight for class is tensor([ 0.0075, -0.0081,  0.0047, -0.0198, -0.0091,  0.0044],
+old weight for class is tensor([ 0.0216, -0.0126, -0.0440,  0.0787, -0.0520,  0.0040],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0484, -0.0120,  0.0453, -0.0092, -0.0746,  0.0008],
+new weight for class is tensor([ 0.0216, -0.0126, -0.0440,  0.0787, -0.0520,  0.0040],
        grad_fn=&lt;SliceBackward&gt;)
 2, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Federal-gov, cat workclass from previous weights
-old weight for class is tensor([-0.0017, -0.0014,  0.0112, -0.0078, -0.0149, -0.0052],
+old weight for class is tensor([-0.0086,  0.0461,  0.0067, -0.0026,  0.0232, -0.0509],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 1.9420e-03,  8.6775e-05,  8.2344e-04,  3.4259e-02,  2.7123e-02,
-        -1.6212e-02], grad_fn=&lt;SliceBackward&gt;)
+new weight for class is tensor([-0.0086,  0.0461,  0.0067, -0.0026,  0.0232, -0.0509],
+       grad_fn=&lt;SliceBackward&gt;)
 3, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Local-gov, cat workclass from previous weights
-old weight for class is tensor([-0.0148,  0.0037,  0.0083, -0.0035, -0.0091, -0.0079],
+old weight for class is tensor([ 0.0619, -0.0427,  0.0406, -0.0403,  0.0576,  0.0453],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0671,  0.0213, -0.0702, -0.0368,  0.0404,  0.0231],
+new weight for class is tensor([ 0.0619, -0.0427,  0.0406, -0.0403,  0.0576,  0.0453],
        grad_fn=&lt;SliceBackward&gt;)
 4, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Never-worked, cat workclass from previous weights
-old weight for class is tensor([ 0.0050, -0.0046,  0.0023, -0.0093,  0.0084,  0.0158],
+old weight for class is tensor([-0.0242,  0.0150, -0.0408,  0.0364, -0.0426, -0.0285],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0189,  0.0238,  0.0176,  0.0094, -0.0305, -0.0108],
+new weight for class is tensor([-0.0242,  0.0150, -0.0408,  0.0364, -0.0426, -0.0285],
        grad_fn=&lt;SliceBackward&gt;)
 5, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Private, cat workclass from previous weights
-old weight for class is tensor([-0.0031,  0.0120, -0.0081, -0.0059, -0.0037,  0.0026],
+old weight for class is tensor([-0.0317,  0.0007,  0.0077,  0.0139, -0.0221, -0.0226],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0189, -0.0493,  0.0234, -0.0115, -0.0270, -0.0016],
+new weight for class is tensor([-0.0317,  0.0007,  0.0077,  0.0139, -0.0221, -0.0226],
        grad_fn=&lt;SliceBackward&gt;)
 6, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Self-emp-inc, cat workclass from previous weights
-old weight for class is tensor([ 0.0140,  0.0064,  0.0172,  0.0007,  0.0032, -0.0023],
+old weight for class is tensor([ 0.0533, -0.0063,  0.0469, -0.0314,  0.0574,  0.0322],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0413,  0.0211, -0.0575, -0.0337,  0.0532,  0.0480],
+new weight for class is tensor([ 0.0533, -0.0063,  0.0469, -0.0314,  0.0574,  0.0322],
        grad_fn=&lt;SliceBackward&gt;)
 7, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Self-emp-not-inc, cat workclass from previous weights
-old weight for class is tensor([ 0.0101, -0.0178,  0.0003,  0.0093, -0.0126, -0.0081],
+old weight for class is tensor([ 0.0165,  0.0365, -0.0122,  0.0023, -0.0144, -0.0079],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0135,  0.0222,  0.0174,  0.0065, -0.0068, -0.0057],
+new weight for class is tensor([ 0.0165,  0.0365, -0.0122,  0.0023, -0.0144, -0.0079],
        grad_fn=&lt;SliceBackward&gt;)
 8, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  State-gov, cat workclass from previous weights
-old weight for class is tensor([ 0.0120,  0.0017,  0.0034,  0.0121,  0.0040, -0.0010],
+old weight for class is tensor([-0.0120,  0.0204,  0.0026, -0.0055,  0.0236, -0.0362],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0037, -0.0185, -0.0016,  0.0182, -0.0010,  0.0079],
+new weight for class is tensor([-0.0120,  0.0204,  0.0026, -0.0055,  0.0236, -0.0362],
        grad_fn=&lt;SliceBackward&gt;)
 9, &lt;class &#39;int&#39;&gt;
 Transferring weights for class  Without-pay, cat workclass from previous weights
-old weight for class is tensor([-0.0022, -0.0128, -0.0025, -0.0132, -0.0165, -0.0036],
+old weight for class is tensor([-0.0349, -0.0240, -0.0491,  0.0039, -0.0234, -0.0003],
        grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0443, -0.0193,  0.0337, -0.0048, -0.0481, -0.0351],
+new weight for class is tensor([-0.0349, -0.0240, -0.0491,  0.0039, -0.0234, -0.0003],
        grad_fn=&lt;SliceBackward&gt;)
 10, &lt;class &#39;int&#39;&gt;
 Transferring weights for class Private, cat workclass using mean
-old weight for class is tensor([ 4.3590e-03,  4.0752e-03,  1.2201e-02, -7.4143e-05, -1.2825e-03,
-        -1.1770e-02], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-4.3801e-04, -1.7851e-03, -8.0605e-05, -3.4863e-03, -8.5167e-03,
-         7.4557e-04], grad_fn=&lt;SliceBackward&gt;)
-Encountered an error for variable sex: Make sure embeddings dimensions are same for [[-0.008142838254570961, 0.0009687276906333864, -0.005184521898627281], [-0.06315058469772339, 0.04905426502227783, 0.029599010944366455], [0.06200817972421646, -0.036537621170282364, -0.032290488481521606]] with size 3, and Embedding(5, 4) with size 4
+old weight for class is tensor([ 0.0036,  0.0035, -0.0027,  0.0065,  0.0021, -0.0059],
+       grad_fn=&lt;SliceBackward&gt;)
+new weight for class is tensor([ 0.0036,  0.0035, -0.0027,  0.0065,  0.0021, -0.0059],
+       grad_fn=&lt;SliceBackward&gt;)
+Encountered an error for variable sex: Make sure embeddings dimensions are same for [[-0.0017159931594505906, -0.0015294364420697093, 0.007879503071308136], [0.08940519392490387, -0.03518747165799141, -0.045552417635917664], [-0.03289536386728287, 0.02211097814142704, 0.021482935175299644]] with size 3, and Embedding(5, 4) with size 4
 Moving on to other cat vars
 </pre>
 </div>
