@@ -35,8 +35,8 @@ class TabTransfer:
         return mapping_dict
 
 
-    def transfer(self, mapping_dict, verbose=False):
-#         self.transfer_list = cat_names_to_transfer
+    def transfer(self, mapping_dict={"race", "workclass", "sex"}, verbose=False):
+        self.transfer_list = cat_names_to_transfer
         for curr_cat in mapping_dict.values():
             if not (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
                 continue

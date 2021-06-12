@@ -53,13 +53,17 @@ learn1, learn2, learn1.model
 For transferring the embeddings from `learn1` to `learn2`, we first instantiate the `TabTransfer` class with the learners and the categorical variables to transfer.
 
 ```
-tabobj = TabTransfer(learn1, learn2)
+tabobj = TabTransfer(learn2)
 ```
 
 Now, we can just call the transfer function to start the process.
 
 ```
-tabobj.transfer(["workclass"], verbose = True)
+tabobj.init_from_json("../data/adults.json")
+```
+
+```
+tabobj.transfer(verbose = True)
 ```
 
     mean is tensor([ 0.0027, -0.0050, -0.0009,  0.0026,  0.0011, -0.0004],
