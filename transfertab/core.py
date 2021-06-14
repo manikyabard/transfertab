@@ -42,28 +42,26 @@ class TabTransfer:
         self.old_all_embeds = embed_dict # contains the cat variable with all its embeddings
 
     def mapping(self, cat_names_to_transfer):
-        self.transfer_list = cat_names_to_transfer
-        mapping_dict = dict.fromkeys(self.transfer_list)
-        for curr_cat in self.transfer_list:
+        mapping_dict = dict.fromkeys(cat_names_to_transfer)
+        for curr_cat in cat_names_to_transfer:
             if (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
                 mapping_dict[curr_cat] = curr_cat
             else:
                 print(self.new_cat_names)
-                mapping_cat = input(f"What do you want to map {curr_cat} to : ")
+                mapping_cat = input(f"\nWhat do you want to map {curr_cat} to : \r")
                 mapping_dict[curr_cat] = mapping_cat
         return mapping_dict
 
 
-    def transfer(self, mapping_dict, verbose=False):
-        self.transfer_list = cat_names_to_transfer
-        for curr_cat in mapping_dict.values():
+    def transfer(self, cat_names_to_transfer, layergroup, mapping_dict, verbose=False):
+        for curr_cat in cat_names_to_transfer:
             if not (curr_cat in self.old_cat_names and curr_cat in self.new_cat_names):
                 continue
             old_cat_idx = self.old_cat_names.index(curr_cat)
             new_cat_idx = self.new_cat_names.index(curr_cat)
 
             # TODO: Make it so that this isn't required by taking care of this.
-            try: assert (len(tabobj.old_all_embeds[curr_cat][0]) == self.new_learner.model.embeds[new_cat_idx].embedding_dim)
+            try: assert (len(tabobj.old_all_embeds[curr_cat][0]) == getattr(self.new_learner.model, layergroup)[new_cat_idx].embedding_dim)
             except:
                 print(f"Encountered an error for variable {curr_cat}: Make sure embeddings dimensions are same for {self.old_all_embeds[curr_cat]} with size {len(tabobj.old_all_embeds[curr_cat])}, and {self.new_learner.model.embeds[new_cat_idx]} with size {self.new_learner.model.embeds[new_cat_idx].embedding_dim}")
                 print("Moving on to other cat vars")
@@ -77,7 +75,7 @@ class TabTransfer:
 
             if verbose: print(f'mean is {weights_mean} for {torch_embeds}')
 
-            # Case where some category in old, but not in new isn't being handled rn.
+            # Case where some class in old, but not in new isn't being handled rn.
 
             for new_curr_class in new_curr_classes:
                 new_curr_class_idx = new_curr_classes.o2i[new_curr_class]
