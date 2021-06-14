@@ -3,6 +3,12 @@
 __all__ = ['TabTransfer']
 
 # Cell
+from nbdev.showdoc import *
+from fastai.tabular.all import *
+from .utils import *
+import json
+
+# Cell
 class TabTransfer:
     def __init__(self, new_learner):
         self.new_cat_names = new_learner.dls.cat_names

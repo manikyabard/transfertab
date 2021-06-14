@@ -2,6 +2,7 @@
 
 title: Core
 
+
 keywords: fastai
 sidebar: home_sidebar
 
@@ -21,6 +22,13 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="container" id="notebook-container">
         
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -460,13 +468,6 @@ nb_path: "nbs/01_transfer.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
 <div class="output_wrapper">
 <div class="output">
 
@@ -474,7 +475,7 @@ nb_path: "nbs/01_transfer.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TabTransfer" class="doc_header"><code>class</code> <code>TabTransfer</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/core.py#L6" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TabTransfer</code>(<strong><code>new_learner</code></strong>)</p>
+<h2 id="TabTransfer" class="doc_header"><code>class</code> <code>TabTransfer</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/core.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TabTransfer</code>(<strong><code>new_learner</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -483,6 +484,13 @@ nb_path: "nbs/01_transfer.ipynb"
 
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -666,7 +674,7 @@ sex
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tabobj</span><span class="o">.</span><span class="n">transfer</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">],</span> <span class="s2">&quot;embeds&quot;</span><span class="p">,</span> <span class="n">mapping_dict</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tabobj</span><span class="o">.</span><span class="n">transfer</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">],</span> <span class="s2">&quot;embeds&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;race&quot;</span><span class="p">:</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">:</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">:</span><span class="s2">&quot;sex&quot;</span><span class="p">},</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
