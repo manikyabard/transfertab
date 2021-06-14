@@ -10,8 +10,27 @@ class TabTransfer:
         self.new_learner = new_learner
 
     def init_from_json(self, path):
-        f = open(path, 'rb')
-        json_file = json.load(f)
+        '''
+        `path` can either a json file or a directory containing multiple json files.
+        The json should contain
+            a `categories` key with all the categories in that json,
+            a key for each category in `categories` inside which there should be
+                a `classes` key with all classes of that key
+                an `embeddings` key with the embeddings for that category
+        '''
+        path = Path(path)
+        json_file = {}
+        if path.is_file():
+            f = open(path, 'rb')
+            json_file = json.load(f)
+        elif path.is_dir():
+            json_file = {"categories": []}
+            for json_f in path.glob("*.json"):
+                f = open(json_f, 'rb')
+                file = json.load(f)
+                json_file["categories"] += file["categories"]
+                del file["categories"]
+                json_file.update(file)
         self.old_cat_names = json_file['categories']
         classes_dict = dict.fromkeys(self.old_cat_names)
         embed_dict = dict.fromkeys(self.old_cat_names)
@@ -42,8 +61,6 @@ class TabTransfer:
                 continue
             old_cat_idx = self.old_cat_names.index(curr_cat)
             new_cat_idx = self.new_cat_names.index(curr_cat)
-
-
 
             # TODO: Make it so that this isn't required by taking care of this.
             try: assert (len(tabobj.old_all_embeds[curr_cat][0]) == self.new_learner.model.embeds[new_cat_idx].embedding_dim)
