@@ -10,14 +10,14 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Title
-      url: Meta-Extraction.html
+      title: Extraction Utilities
+      url: /ExractUtils
     - output: web,pdf
       title: Core
-      url: transfer.html
+      url: /transfer
     - output: web,pdf
       title: Experiments with loading 01
-      url: load_tests.html
+      url: /load_tests
     output: web
     title: transfertab
   output: web

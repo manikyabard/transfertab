@@ -2,7 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"extractembeds": "00_ExractUtils.ipynb",
+index = {"extract_meta_from_learner": "00_ExractUtils.ipynb",
+         "extract_meta_from_df": "00_ExractUtils.ipynb",
+         "extractembeds": "00_ExractUtils.ipynb",
          "TabTransfer": "01_transfer.ipynb"}
 
 modules = ["utils.py",
