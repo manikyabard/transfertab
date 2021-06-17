@@ -56,11 +56,35 @@ For transferring the embeddings from `learn1` to `learn2`, we first instantiate 
 tabobj = TabTransfer(learn2)
 ```
 
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-4-7bae12932fef> in <module>
+    ----> 1 tabobj = TabTransfer(learn2)
+    
+
+    NameError: name 'TabTransfer' is not defined
+
+
 Now, we can just call the transfer function to start the process.
 
 ```
 tabobj.init_from_json("../data/adults.json")
 ```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-5-a78738acd2cf> in <module>
+    ----> 1 tabobj.init_from_json("../data/adults.json")
+    
+
+    NameError: name 'tabobj' is not defined
+
 
 ```
 tabobj.transfer(verbose = True)
@@ -145,4 +169,4 @@ tabobj.transfer(verbose = True)
            grad_fn=<SliceBackward>)
     new weight for class is tensor([ 0.0027, -0.0050, -0.0009,  0.0026,  0.0011, -0.0004],
            grad_fn=<SliceBackward>)
-
+    

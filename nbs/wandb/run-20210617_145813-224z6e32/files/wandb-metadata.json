@@ -1,0 +1,24 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.8.10",
+    "heartbeatAt": "2021-06-17T09:28:16.269517",
+    "startedAt": "2021-06-17T09:28:13.296412",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "-f",
+        "C:\\Users\\HP\\AppData\\Roaming\\jupyter\\runtime\\kernel-37cf9f12-71d2-4858-a8c5-261d2f27f061.json"
+    ],
+    "state": "running",
+    "program": "transfertab/nbs/02_load_tests.ipynb",
+    "root": "C:/Users/HP/transfertab",
+    "git": {
+        "remote": "https://github.com/manikyabard/transfertab.git",
+        "commit": "ec0898520743a5d841b304e6fa3181a9a06e8542"
+    },
+    "email": "isheeta50@gmail.com",
+    "host": "DESKTOP-1VR04FN",
+    "username": "HP",
+    "executable": "D:\\Anaconda\\python.exe"
+}

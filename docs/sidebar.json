@@ -3,6 +3,6 @@
     "Overview": "/",
     "Title": "Meta-Extraction.html",
     "Core": "transfer.html",
-    "Experiments with loading 01": "load_tests.html"
+    "load_tests": "load_tests.html"
   }
 }
