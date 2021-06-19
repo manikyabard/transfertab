@@ -169,4 +169,4 @@ tabobj.transfer(verbose = True)
            grad_fn=<SliceBackward>)
     new weight for class is tensor([ 0.0027, -0.0050, -0.0009,  0.0026,  0.0011, -0.0004],
            grad_fn=<SliceBackward>)
-    
+
