@@ -67,9 +67,9 @@ class TabTransfer:
             new_cat_idx = self.new_cat_names.index(curr_cat)
 
             # TODO: Make it so that this isn't required by taking care of this.
-            try: assert (len(tabobj.old_all_embeds[curr_cat][0]) == getattr(self.new_learner.model, layergroup)[new_cat_idx].embedding_dim)
+            try: assert (len(self.old_all_embeds[curr_cat][0]) == self.new_learner.model.embeds[new_cat_idx].embedding_dim)
             except:
-                print(f"Encountered an error for variable {curr_cat}: Make sure embeddings dimensions are same for {self.old_all_embeds[curr_cat]} with size {len(tabobj.old_all_embeds[curr_cat])}, and {self.new_learner.model.embeds[new_cat_idx]} with size {self.new_learner.model.embeds[new_cat_idx].embedding_dim}")
+                print(f"Encountered an error for variable {curr_cat}: Make sure embeddings dimensions are same for {self.old_all_embeds[curr_cat]} with size {len(self.old_all_embeds[curr_cat])}, and {self.new_learner.model.embeds[new_cat_idx]} with size {self.new_learner.model.embeds[new_cat_idx].embedding_dim}")
                 print("Moving on to other cat vars")
                 continue
 
