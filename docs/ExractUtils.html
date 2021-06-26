@@ -70,7 +70,7 @@ nb_path: "nbs/00_ExractUtils.ipynb"
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">untar_data</span><span class="p">(</span><span class="n">URLs</span><span class="o">.</span><span class="n">ADULT_SAMPLE</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">&#39;adult.csv&#39;</span><span class="p">)</span>
 <span class="n">dls</span> <span class="o">=</span> <span class="n">TabularDataLoaders</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">&#39;adult.csv&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">y_names</span><span class="o">=</span><span class="s2">&quot;salary&quot;</span><span class="p">,</span>
-    <span class="n">cat_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">,</span> <span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="s1">&#39;marital-status&#39;</span><span class="p">,</span> <span class="s1">&#39;occupation&#39;</span><span class="p">,</span> <span class="s1">&#39;relationship&#39;</span><span class="p">,</span> <span class="s1">&#39;race&#39;</span><span class="p">],</span>
+    <span class="n">cat_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">,</span> <span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="s1">&#39;marital-status&#39;</span><span class="p">,</span> <span class="s1">&#39;occupation&#39;</span><span class="p">,</span> <span class="s1">&#39;relationship&#39;</span><span class="p">,</span> <span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span>
     <span class="n">cont_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;fnlwgt&#39;</span><span class="p">,</span> <span class="s1">&#39;education-num&#39;</span><span class="p">],</span>
     <span class="n">procs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Categorify</span><span class="p">,</span> <span class="n">FillMissing</span><span class="p">,</span> <span class="n">Normalize</span><span class="p">])</span>
 </pre></div>
@@ -166,7 +166,7 @@ nb_path: "nbs/00_ExractUtils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="extract_meta_from_learner" class="doc_header"><code>extract_meta_from_learner</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_meta_from_learner</code>(<strong><code>learner</code></strong>)</p>
+<h4 id="extract_meta_from_learner" class="doc_header"><code>extract_meta_from_learner</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_meta_from_learner</code>(<strong><code>learner</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -190,7 +190,7 @@ nb_path: "nbs/00_ExractUtils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="extract_meta_from_df" class="doc_header"><code>extract_meta_from_df</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_meta_from_df</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
+<h4 id="extract_meta_from_df" class="doc_header"><code>extract_meta_from_df</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_meta_from_df</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
 </blockquote>
 
 </div>
@@ -221,7 +221,65 @@ nb_path: "nbs/00_ExractUtils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="extractembeds" class="doc_header"><code>extractembeds</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extractembeds</code>(<strong><code>model</code></strong>, <strong><code>embeddinglg</code></strong>:<code>str</code>, <strong><code>metadict</code></strong>, <strong><code>path</code></strong>)</p>
+<h2 id="CustomJSONizer" class="doc_header"><code>class</code> <code>CustomJSONizer</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CustomJSONizer</code>(<strong><code>skipkeys</code></strong>=<em><code>False</code></em>, <strong><code>ensure_ascii</code></strong>=<em><code>True</code></em>, <strong><code>check_circular</code></strong>=<em><code>True</code></em>, <strong><code>allow_nan</code></strong>=<em><code>True</code></em>, <strong><code>sort_keys</code></strong>=<em><code>False</code></em>, <strong><code>indent</code></strong>=<em><code>None</code></em>, <strong><code>separators</code></strong>=<em><code>None</code></em>, <strong><code>default</code></strong>=<em><code>None</code></em>) :: <code>JSONEncoder</code></p>
+</blockquote>
+
+<pre><code>Extensible JSON &lt;http://json.org&gt; encoder for Python data structures.
+
+Supports the following objects and types by default:
+
++-------------------+---------------+
+| Python            | JSON          |
++===================+===============+
+| dict              | object        |
++-------------------+---------------+
+| list, tuple       | array         |
++-------------------+---------------+
+| str               | string        |
++-------------------+---------------+
+| int, float        | number        |
++-------------------+---------------+
+| True              | true          |
++-------------------+---------------+
+| False             | false         |
++-------------------+---------------+
+| None              | null          |
++-------------------+---------------+
+
+To extend this to recognize other objects, subclass and implement a
+``.default()`` method with another method that returns a serializable
+object for ``o`` if possible, otherwise it should call the superclass
+implementation (to raise ``TypeError``).</code></pre>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="extractembeds" class="doc_header"><code>extractembeds</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extractembeds</code>(<strong><code>model</code></strong>, <strong><code>embeddinglg</code></strong>:<code>str</code>, <strong><code>metadict</code></strong>, <strong><code>path</code></strong>)</p>
 </blockquote>
 
 <pre><code>model: Any pytorch model, containing a layergroup with all the embedding layers.
@@ -253,7 +311,8 @@ path: Path of the json</code></pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embeddict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">learn</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;embeds&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">meta_new</span><span class="o">=</span><span class="n">extract_meta_from_learner</span><span class="p">(</span><span class="n">learn</span><span class="p">)</span>
+<span class="n">embeddict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">learn</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;embeds&quot;</span><span class="p">,</span> <span class="n">meta_new</span><span class="p">,</span> <span class="s2">&quot;test.json&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -270,7 +329,7 @@ path: Path of the json</code></pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embeddict</span><span class="p">[</span><span class="s2">&quot;workclass&quot;</span><span class="p">][</span><span class="s2">&quot;embeddings&quot;</span><span class="p">][:</span><span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embeddict</span><span class="p">[</span><span class="s1">&#39;education-num_na&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -285,12 +344,12 @@ path: Path of the json</code></pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[[0.011566209606826305,
-  -0.009608260355889797,
-  -0.005055208690464497,
-  0.012445224449038506,
-  -0.003585385624319315,
-  0.0029318814631551504]]</pre>
+<pre>{&#39;classes&#39;: [&#39;#na#&#39;, False, True],
+ &#39;embeddings&#39;: [[3.5684544855030254e-05,
+   0.002612957963719964,
+   0.013382526114583015],
+  [-0.0011584986932575703, 0.006993609014898539, 0.0005290795234031975],
+  [-0.019433515146374702, -0.004828458186239004, -0.002685201819986105]]}</pre>
 </div>
 
 </div>
