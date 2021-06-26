@@ -86,7 +86,7 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn1</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">embeds</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn1</span><span class="o">.</span><span class="n">model</span>
 </pre></div>
 
     </div>
@@ -101,15 +101,34 @@ nb_path: "nbs/01_transfer.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ModuleList(
-  (0): Embedding(10, 6)
-  (1): Embedding(17, 8)
-  (2): Embedding(8, 5)
-  (3): Embedding(16, 8)
-  (4): Embedding(7, 5)
-  (5): Embedding(6, 4)
-  (6): Embedding(3, 3)
-  (7): Embedding(3, 3)
+<pre>TabularModel(
+  (embeds): ModuleList(
+    (0): Embedding(10, 6)
+    (1): Embedding(17, 8)
+    (2): Embedding(8, 5)
+    (3): Embedding(16, 8)
+    (4): Embedding(7, 5)
+    (5): Embedding(6, 4)
+    (6): Embedding(3, 3)
+    (7): Embedding(3, 3)
+  )
+  (emb_drop): Dropout(p=0.0, inplace=False)
+  (bn_cont): BatchNorm1d(3, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (layers): Sequential(
+    (0): LinBnDrop(
+      (0): Linear(in_features=45, out_features=200, bias=False)
+      (1): ReLU(inplace=True)
+      (2): BatchNorm1d(200, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): LinBnDrop(
+      (0): Linear(in_features=200, out_features=100, bias=False)
+      (1): ReLU(inplace=True)
+      (2): BatchNorm1d(100, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): LinBnDrop(
+      (0): Linear(in_features=100, out_features=2, bias=True)
+    )
+  )
 )</pre>
 </div>
 
@@ -135,6 +154,57 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))[:,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([1, 1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">catinp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="n">continp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn1</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">embeds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">learn1</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">embeds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
@@ -151,17 +221,26 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>(Parameter containing:
- tensor([[-0.0013, -0.0056,  0.0093, -0.0071, -0.0052,  0.0046],
-         [ 0.0019, -0.0055, -0.0051,  0.0132, -0.0157,  0.0057],
-         [-0.0107,  0.0045,  0.0022,  0.0005, -0.0038,  0.0022],
-         [ 0.0053, -0.0026, -0.0080, -0.0033,  0.0005, -0.0017],
-         [ 0.0077, -0.0057,  0.0013,  0.0072, -0.0067, -0.0064],
-         [ 0.0061, -0.0104,  0.0147, -0.0083, -0.0044, -0.0158],
-         [-0.0128, -0.0062, -0.0076,  0.0089,  0.0048, -0.0080],
-         [ 0.0023, -0.0071,  0.0079, -0.0055,  0.0056,  0.0005],
-         [-0.0089, -0.0005, -0.0012, -0.0112, -0.0150, -0.0065],
-         [-0.0022, -0.0035, -0.0078,  0.0027,  0.0028, -0.0028]],
-        requires_grad=True),
+ tensor([[-5.6853e-03,  1.8688e-03,  1.4476e-02,  9.7890e-03,  1.4115e-02,
+           5.7125e-03],
+         [-9.1271e-03, -1.5946e-03,  5.6058e-03,  3.0356e-03,  2.5559e-03,
+          -1.2680e-02],
+         [-2.1623e-03, -4.1510e-05, -1.0180e-02,  1.3648e-02,  1.5476e-02,
+          -1.8098e-03],
+         [ 5.6572e-03,  1.5083e-02,  7.9600e-03, -7.3476e-04, -1.1631e-02,
+          -7.4402e-03],
+         [ 3.3497e-03, -3.0329e-03,  2.3689e-03, -3.3820e-03,  1.5509e-02,
+          -9.7973e-03],
+         [ 1.2162e-02,  1.0208e-02,  1.4835e-03,  8.3532e-03,  1.1189e-02,
+           9.2965e-04],
+         [ 8.5163e-03, -1.2888e-02,  8.2518e-03,  3.5525e-03,  4.3668e-03,
+           3.4388e-03],
+         [ 6.6009e-03, -5.5191e-03,  7.2820e-03,  1.3600e-02, -2.4659e-03,
+          -6.2848e-04],
+         [ 1.0715e-03, -3.1847e-03, -6.2840e-03, -6.0915e-03,  7.6644e-04,
+           4.6805e-03],
+         [ 1.5399e-02, -8.3873e-03, -8.9908e-03,  3.5097e-04, -7.0670e-03,
+           1.1123e-02]], requires_grad=True),
  torch.Size([10, 6]))</pre>
 </div>
 
@@ -207,10 +286,10 @@ nb_path: "nbs/01_transfer.ipynb"
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.368889</td>
-      <td>0.350886</td>
-      <td>0.833999</td>
-      <td>00:07</td>
+      <td>0.371636</td>
+      <td>0.351842</td>
+      <td>0.838298</td>
+      <td>00:04</td>
     </tr>
   </tbody>
 </table>
@@ -631,7 +710,7 @@ nb_path: "nbs/01_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mapping_dict</span> <span class="o">=</span> <span class="n">tabobj</span><span class="o">.</span><span class="n">mapping</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mapping_dict</span> <span class="o">=</span> <span class="n">tabobj</span><span class="o">.</span><span class="n">mapping</span><span class="p">([</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="s2">&quot;workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;gender&quot;</span><span class="p">])</span>
 </pre></div>
 
     </div>
