@@ -2,11 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"extract_meta_from_learner": "00_ExractUtils.ipynb",
-         "extract_meta_from_df": "00_ExractUtils.ipynb",
-         "CustomJSONizer": "00_ExractUtils.ipynb",
-         "extractembeds": "00_ExractUtils.ipynb",
-         "TabTransfer": "01_transfer.ipynb"}
+index = {"JSONizerWithBool": "01_extract.ipynb",
+         "getcatdict": "01_extract.ipynb"}
 
 modules = ["utils.py",
            "core.py"]

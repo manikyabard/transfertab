@@ -18,6 +18,41 @@ To make use of `transfertab`, you'll need
 	* A pytorch model which contains some embeddings in a layer group.  
 	* Another model to transfer these embeddings to, along with the metadata about the dataset on which this model will be trained.
 
+Here we'll quickly construct a `ModuleList` with a bunch of `Embedding` layers, and see how to transfer it's embeddings.
+
+```python
+# #hide
+# path = untar_data(URLs.ADULT_SAMPLE)
+# df1 = pd.read_csv(path/'adult.csv')
+# splits1 = RandomSplitter(valid_pct=0.2)(range_of(df1))
+# to1 = TabularPandas(df1, procs=[Categorify, FillMissing,Normalize],
+#                    cat_names = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
+#                    cont_names = ['age', 'fnlwgt', 'education-num'],
+#                    y_names='salary',
+#                    splits=splits1)
+# dls1 = to1.dataloaders(bs=64)
+# learn1 = tabular_learner(dls1, metrics=accuracy)
+
+# #We add robot to our "race" column
+# new_rows = pd.DataFrame([[49,'Private',101320,'Assoc-acdm',12.0,'Married-civ-spouse','Exec-managerial','Wife','Robot','Female',0,1902,40,'United-States','>=50k'],
+#                         [18,'Private',182308,'Bachelors',10.0,'Never-married','?','Own-child','Other','Male',0,0,23,'United-States','<50k']],
+#                         columns=df1.columns)
+# df2 = df1.copy()
+# df2 = df2.append(new_rows, ignore_index=True)
+# df2.tail()
+
+# splits2 = RandomSplitter(valid_pct=0.2)(range_of(df2))
+# to2 = TabularPandas(df2, procs=[Categorify, FillMissing,Normalize],
+#                    cat_names = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
+#                    cont_names = ['age', 'fnlwgt', 'education-num'],
+#                    y_names='salary',
+#                    splits=splits2)
+# dls2 = to2.dataloaders(bs=64)
+# learn2 = tabular_learner(dls2, metrics=accuracy)
+
+
+```
+
 The model from which we want to extract embeddings is trained on a dataset with 7 categorical variables, and 3 continuous ones. It contains embeddings for each of these categorical variables.
 
 
@@ -66,7 +101,7 @@ To start with the Extraction process, first we need a `metadict` containing info
 For this, we can either contruct it manually, or use one of the helper functions provided in the library.
 
 ```python
-df1.head()
+# df1.head()
 ```
 
 
@@ -205,8 +240,8 @@ df1.head()
 
 
 ```python
-meta = extract_meta_from_df(df1)
-meta.keys(), meta['relationship']
+# meta = extract_meta_from_df(df1)
+# meta.keys(), meta['relationship']
 ```
 
 
@@ -227,39 +262,39 @@ If we want to manually define which categories we want to extract, we can do so 
 
 ```python
 
-meta = {
-    "categories":['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
-    "workclass": {
-        "classes": ['nan', ' Private', ' Self-emp-inc', ' Self-emp-not-inc', ' State-gov',
-           ' Federal-gov', ' Local-gov', ' ?', ' Without-pay',
-           ' Never-worked'],
-    },
-    'education': {
-        "classes": ['nan', ' Assoc-acdm', ' Masters', ' HS-grad', ' Prof-school', ' 7th-8th',
-       ' Some-college', ' 11th', ' Bachelors', ' Assoc-voc', ' 10th',
-       ' 9th', ' Doctorate', ' 12th', ' 1st-4th', ' 5th-6th',
-       ' Preschool']
-    },
-    "marital-status": {
-        "classes": ['nan', ' Married-civ-spouse', ' Divorced', ' Never-married', ' Widowed',
-       ' Married-spouse-absent', ' Separated', ' Married-AF-spouse']
-    },
-    "occupation": {
-        "classes": ["nan", ' Exec-managerial', ' Prof-specialty', ' Other-service',
-       ' Handlers-cleaners', ' Craft-repair', ' Adm-clerical', ' Sales',
-       ' Machine-op-inspct', ' Transport-moving', ' ?',
-       ' Farming-fishing', ' Tech-support', ' Protective-serv',
-       ' Priv-house-serv', ' Armed-Forces']
-    },
-    "relationship": {
-        "classes": ['nan', ' Wife', ' Not-in-family', ' Unmarried', ' Husband', ' Own-child',
-       ' Other-relative']
-    },
-    "race": {
-        "classes": ['nan', ' White', ' Black', ' Asian-Pac-Islander', ' Amer-Indian-Eskimo',
-       ' Other']
-    }
-}
+# meta = {
+#     "categories":['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
+#     "workclass": {
+#         "classes": ['nan', ' Private', ' Self-emp-inc', ' Self-emp-not-inc', ' State-gov',
+#            ' Federal-gov', ' Local-gov', ' ?', ' Without-pay',
+#            ' Never-worked'],
+#     },
+#     'education': {
+#         "classes": ['nan', ' Assoc-acdm', ' Masters', ' HS-grad', ' Prof-school', ' 7th-8th',
+#        ' Some-college', ' 11th', ' Bachelors', ' Assoc-voc', ' 10th',
+#        ' 9th', ' Doctorate', ' 12th', ' 1st-4th', ' 5th-6th',
+#        ' Preschool']
+#     },
+#     "marital-status": {
+#         "classes": ['nan', ' Married-civ-spouse', ' Divorced', ' Never-married', ' Widowed',
+#        ' Married-spouse-absent', ' Separated', ' Married-AF-spouse']
+#     },
+#     "occupation": {
+#         "classes": ["nan", ' Exec-managerial', ' Prof-specialty', ' Other-service',
+#        ' Handlers-cleaners', ' Craft-repair', ' Adm-clerical', ' Sales',
+#        ' Machine-op-inspct', ' Transport-moving', ' ?',
+#        ' Farming-fishing', ' Tech-support', ' Protective-serv',
+#        ' Priv-house-serv', ' Armed-Forces']
+#     },
+#     "relationship": {
+#         "classes": ['nan', ' Wife', ' Not-in-family', ' Unmarried', ' Husband', ' Own-child',
+#        ' Other-relative']
+#     },
+#     "race": {
+#         "classes": ['nan', ' White', ' Black', ' Asian-Pac-Islander', ' Amer-Indian-Eskimo',
+#        ' Other']
+#     }
+# }
 ```
 
 More information about the metadict format can be found in the docs.
@@ -280,8 +315,8 @@ path: Path of the json
 
 
 ```python
-emb_details = extractembeds(learn1.model, 'embeds', meta, '../data/adult.json')
-emb_details['race']
+# emb_details = extractembeds(learn1.model, 'embeds', meta, '../data/adult.json')
+# emb_details['race']
 ```
 
 
@@ -323,7 +358,7 @@ emb_details['race']
 The embeddings will be stored in a `json` file in the given `path`. Now this file can be used to transfer these embeddings to another model.
 
 ```python
-tabobj = TabTransfer(learn1)
+# tabobj = TabTransfer(learn1)
 ```
 
 Now after creating a `TabTransfer` object, we need to initialize this with either-  
@@ -331,16 +366,16 @@ Now after creating a `TabTransfer` object, we need to initialize this with eithe
 2. The directory which contains multiple `json` files constructed using the same method, but containing various embeddings for different categorical variables needed to be transferred.
 
 ```python
-#skip
-tabobj.init_from_json("../data/adults.json")
+# #skip
+# tabobj.init_from_json("../data/adults.json")
 ```
 
 There might be a case where the name of the categorical variables present in the `json` might differ from the ones present in the new model's learner. For this we can use a `mapping_dict` which maps old variable names to new ones. This can be created using the `mapping` function of the object and pass it the categorical values to transfer.
 
 ```python
-#skip
-mapping_dict = tabobj.mapping(["race", "workclass", "gender"])
-mapping_dict
+# #skip
+# mapping_dict = tabobj.mapping(["race", "workclass", "gender"])
+# mapping_dict
 ```
 
     ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'education-num_na']
@@ -364,8 +399,8 @@ mapping_dict
 As we can see, the transfer process will start after running `tabobj.transfer` function.
 
 ```python
-#skip
-tabobj.transfer(["race", "workclass", "gender"], "embeds", {"race":"race", "workclass": "workclass", "gender":"sex"}, verbose = True)
+# #skip
+# tabobj.transfer(["race", "workclass", "gender"], "embeds", {"race":"race", "workclass": "workclass", "gender":"sex"}, verbose = True)
 ```
 
     mean is tensor([ 0.0041, -0.0072, -0.0091, -0.0078]) for tensor([[-0.0118, -0.0154, -0.0116, -0.0055],

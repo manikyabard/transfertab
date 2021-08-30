@@ -11,9 +11,9 @@ entries:
       url: /
     - output: web,pdf
       title: Extraction Utilities
-      url: ExractUtils.html
+      url: extract.html
     - output: web,pdf
-      title: Core
+      title: Transfer
       url: transfer.html
     - output: web,pdf
       title: Experiments with loading 01

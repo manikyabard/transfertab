@@ -1,8 +1,8 @@
 {
   "transfertab": {
     "Overview": "/",
-    "Extraction Utilities": "ExractUtils.html",
-    "Core": "transfer.html",
+    "Extraction Utilities": "extract.html",
+    "Transfer": "transfer.html",
     "Experiments with loading 01": "load_tests.html"
   }
 }
