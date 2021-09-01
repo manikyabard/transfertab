@@ -3,7 +3,9 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"JSONizerWithBool": "01_extract.ipynb",
-         "getcatdict": "01_extract.ipynb"}
+         "getcatdict": "01_extract.ipynb",
+         "store_bson": "01_extract.ipynb",
+         "load_bson": "01_extract.ipynb"}
 
 modules = ["utils.py",
            "core.py"]

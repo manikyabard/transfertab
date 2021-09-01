@@ -36,6 +36,23 @@ nb_path: "nbs/02_transfer.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We'll create collections of Embedding layers, which will be used to test our transfer methods.</p>
@@ -130,10 +147,10 @@ nb_path: "nbs/02_transfer.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">newcatcols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;new_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_cat2&quot;</span><span class="p">)</span>
-<span class="n">oldcatcols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat2&quot;</span><span class="p">)</span>
+<span class="n">oldcatcols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
 
 <span class="n">newcatdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;new_cat1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;new_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class2&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class3&quot;</span><span class="p">],</span> <span class="s2">&quot;new_cat2&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;new_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class2&quot;</span><span class="p">]}</span>
-<span class="n">oldcatdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;old_cat1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;old_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;old_class2&quot;</span><span class="p">],</span> <span class="s2">&quot;old_cat2&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;old_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;old_class2&quot;</span><span class="p">]}</span>
+<span class="n">oldcatdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;old_cat2&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]}</span>
 </pre></div>
 
     </div>
@@ -192,40 +209,16 @@ nb_path: "nbs/02_transfer.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;new_cat1&#39;: {&#39;mapped_cat&#39;: &#39;old_cat1&#39;,
-  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;old_class1&#39;, &#39;old_class2&#39;],
-   &#39;new_class2&#39;: [&#39;old_class2&#39;],
+<pre>{&#39;new_cat1&#39;: {&#39;mapped_cat&#39;: &#39;old_cat2&#39;,
+  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;a&#39;, &#39;b&#39;],
+   &#39;new_class2&#39;: [&#39;b&#39;],
    &#39;new_class3&#39;: []}},
- &#39;new_cat2&#39;: {&#39;mapped_cat&#39;: &#39;old_cat2&#39;,
-  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;old_class2&#39;], &#39;new_class2&#39;: []}}}</pre>
+ &#39;new_cat2&#39;: {&#39;mapped_cat&#39;: &#39;old_cat3&#39;,
+  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;A&#39;], &#39;new_class2&#39;: []}}}</pre>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -239,7 +232,7 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed2</span>
 </pre></div>
 
     </div>
@@ -254,7 +247,126 @@ nb_path: "nbs/02_transfer.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>pathlib.PosixPath</pre>
+<pre>ModuleList(
+  (0): Embedding(2, 10)
+  (1): Embedding(2, 8)
+)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;old_cat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;old_cat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
+<span class="n">embdict</span> <span class="o">=</span> <span class="n">transfertab</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">extractembeds</span><span class="p">(</span><span class="n">embed2</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span>
+<span class="n">embdict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;old_cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;],
+  &#39;embeddings&#39;: [[0.4175843298435211,
+    -1.0199278593063354,
+    -0.6709107756614685,
+    -0.500321090221405,
+    -0.13969416916370392,
+    -0.5671979188919067,
+    1.4760546684265137,
+    -0.7525286674499512,
+    0.43304163217544556,
+    -2.7244691848754883],
+   [-1.2662526369094849,
+    0.39920574426651,
+    0.1494867205619812,
+    -2.012317419052124,
+    0.7739086747169495,
+    1.636749267578125,
+    0.8324260711669922,
+    1.0281352996826172,
+    0.9744652509689331,
+    0.520490288734436]]},
+ &#39;old_cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;],
+  &#39;embeddings&#39;: [[1.4979701042175293,
+    -1.1346012353897095,
+    0.05064915120601654,
+    -0.2791922688484192,
+    0.9253252148628235,
+    -0.9470803141593933,
+    0.13601328432559967,
+    0.7067786455154419],
+   [0.5263708233833313,
+    1.1203124523162842,
+    0.8524508476257324,
+    -0.8725061416625977,
+    -0.4161680340766907,
+    0.08518705517053604,
+    -1.741043210029602,
+    -0.3950035274028778]]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transferembeds_</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(Module,dict) -&gt; transferembeds_
+(Module,PosixPath) -&gt; transferembeds_
+(Module,str) -&gt; transferembeds_
+(Module,Module) -&gt; transferembeds_</pre>
 </div>
 
 </div>
@@ -295,15 +407,15 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[-0.8785, -1.3125, -1.7447, -0.0523,  0.2181, -0.4410, -0.2545, -0.7003,
-                        0.8835,  0.1169],
-                      [-0.2754,  1.6872, -1.4758, -0.6321, -0.8176, -0.5889, -0.7625,  1.1944,
-                       -0.8908,  0.4763],
-                      [ 0.8055,  1.6962,  0.7415, -0.9416, -0.4558,  0.3970,  1.4989, -0.2572,
-                       -0.4770,  0.9706]])),
+              tensor([[-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
+                        0.7038, -1.1020],
+                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
+                        0.9745,  0.5205],
+                      [-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
+                        0.7038, -1.1020]])),
              (&#39;1.weight&#39;,
-              tensor([[ 0.5748, -2.2568, -0.1955,  0.1461,  0.8718,  1.2307, -0.3835, -1.2792],
-                      [ 0.5399, -0.0471, -0.5947,  0.3210, -0.7245, -0.3612, -1.4094, -0.8337]]))])</pre>
+              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
+                      [ 1.0122, -0.0071,  0.4516, -0.5758,  0.2546, -0.4309, -0.8025,  0.1559]]))])</pre>
 </div>
 
 </div>
@@ -337,17 +449,35 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[-0.8082,  0.0527, -0.4755, -0.2601, -1.5288, -1.4793, -1.2562,  1.7078,
-                        1.3433,  0.1644],
-                      [ 1.3142, -0.0689,  0.1832,  0.2934,  0.7709,  1.2324, -0.8176, -0.2325,
-                        1.6991, -1.1931]])),
+              tensor([[ 0.4176, -1.0199, -0.6709, -0.5003, -0.1397, -0.5672,  1.4761, -0.7525,
+                        0.4330, -2.7245],
+                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
+                        0.9745,  0.5205]])),
              (&#39;1.weight&#39;,
-              tensor([[-0.3152,  1.4867, -2.0957, -1.1404,  1.4763,  0.9344, -0.2639, -1.7845],
-                      [ 1.3346,  1.3075, -0.7350,  0.4069, -1.7279, -1.3855,  0.3464,  0.1231]]))])</pre>
+              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
+                      [ 0.5264,  1.1203,  0.8525, -0.8725, -0.4162,  0.0852, -1.7410, -0.3950]]))])</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transfer_cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;new_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_cat2&quot;</span><span class="p">)</span>
+<span class="n">transferembeds_</span><span class="p">(</span><span class="n">embed1</span><span class="p">,</span> <span class="n">embdict</span><span class="p">,</span> <span class="n">metadict</span><span class="p">,</span> <span class="n">transfer_cats</span><span class="p">,</span> <span class="n">newcatcols</span><span class="o">=</span><span class="n">newcatcols</span><span class="p">,</span> <span class="n">oldcatcols</span><span class="o">=</span><span class="n">oldcatcols</span><span class="p">,</span> <span class="n">newcatdict</span><span class="o">=</span><span class="n">newcatdict</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -369,22 +499,21 @@ nb_path: "nbs/02_transfer.ipynb"
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>new param size: torch.Size([10, 3])
-old param size: torch.Size([3, 10])
-
-new param size: torch.Size([8, 2])
-old param size: torch.Size([2, 8])
-
-</pre>
 </div>
-</div>
+    {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transfer_cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;new_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_cat2&quot;</span><span class="p">)</span>
+<span class="n">transferembeds_</span><span class="p">(</span><span class="n">embed1</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">),</span> <span class="n">metadict</span><span class="p">,</span> <span class="n">transfer_cats</span><span class="p">,</span> <span class="n">newcatcols</span><span class="o">=</span><span class="n">newcatcols</span><span class="p">,</span> <span class="n">oldcatcols</span><span class="o">=</span><span class="n">oldcatcols</span><span class="p">,</span> <span class="n">newcatdict</span><span class="o">=</span><span class="n">newcatdict</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -421,15 +550,15 @@ old param size: torch.Size([2, 8])
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[ 0.2530, -0.0081, -0.1462,  0.0167, -0.3789, -0.1234, -1.0369,  0.7377,
-                        1.5212, -0.5143],
-                      [ 1.3142, -0.0689,  0.1832,  0.2934,  0.7709,  1.2324, -0.8176, -0.2325,
-                        1.6991, -1.1931],
-                      [ 0.2530, -0.0081, -0.1462,  0.0167, -0.3789, -0.1234, -1.0369,  0.7377,
-                        1.5212, -0.5143]])),
+              tensor([[-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
+                        0.7038, -1.1020],
+                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
+                        0.9745,  0.5205],
+                      [-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
+                        0.7038, -1.1020]])),
              (&#39;1.weight&#39;,
-              tensor([[ 1.3346,  1.3075, -0.7350,  0.4069, -1.7279, -1.3855,  0.3464,  0.1231],
-                      [ 0.5097,  1.3971, -1.4153, -0.3668, -0.1258, -0.2256,  0.0412, -0.8307]]))])</pre>
+              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
+                      [ 1.0122, -0.0071,  0.4516, -0.5758,  0.2546, -0.4309, -0.8025,  0.1559]]))])</pre>
 </div>
 
 </div>
@@ -463,17 +592,34 @@ old param size: torch.Size([2, 8])
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[-0.8082,  0.0527, -0.4755, -0.2601, -1.5288, -1.4793, -1.2562,  1.7078,
-                        1.3433,  0.1644],
-                      [ 1.3142, -0.0689,  0.1832,  0.2934,  0.7709,  1.2324, -0.8176, -0.2325,
-                        1.6991, -1.1931]])),
+              tensor([[ 0.4176, -1.0199, -0.6709, -0.5003, -0.1397, -0.5672,  1.4761, -0.7525,
+                        0.4330, -2.7245],
+                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
+                        0.9745,  0.5205]])),
              (&#39;1.weight&#39;,
-              tensor([[-0.3152,  1.4867, -2.0957, -1.1404,  1.4763,  0.9344, -0.2639, -1.7845],
-                      [ 1.3346,  1.3075, -0.7350,  0.4069, -1.7279, -1.3855,  0.3464,  0.1231]]))])</pre>
+              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
+                      [ 0.5264,  1.1203,  0.8525, -0.8725, -0.4162,  0.0852, -1.7410, -0.3950]]))])</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 

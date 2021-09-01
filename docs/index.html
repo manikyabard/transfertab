@@ -129,49 +129,6 @@ pip install -e .
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>TabularModel(
-  (embeds): ModuleList(
-    (0): Embedding(10, 6)
-    (1): Embedding(17, 8)
-    (2): Embedding(8, 5)
-    (3): Embedding(16, 8)
-    (4): Embedding(7, 5)
-    (5): Embedding(6, 4)
-    (6): Embedding(3, 3)
-  )
-  (emb_drop): Dropout(p=0.0, inplace=False)
-  (bn_cont): BatchNorm1d(3, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-  (layers): Sequential(
-    (0): LinBnDrop(
-      (0): Linear(in_features=42, out_features=200, bias=False)
-      (1): ReLU(inplace=True)
-      (2): BatchNorm1d(200, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    )
-    (1): LinBnDrop(
-      (0): Linear(in_features=200, out_features=100, bias=False)
-      (1): ReLU(inplace=True)
-      (2): BatchNorm1d(100, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    )
-    (2): LinBnDrop(
-      (0): Linear(in_features=100, out_features=2, bias=True)
-    )
-  )
-)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -214,149 +171,6 @@ For this, we can either contruct it manually, or use one of the helper functions
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>workclass</th>
-      <th>fnlwgt</th>
-      <th>education</th>
-      <th>education-num</th>
-      <th>marital-status</th>
-      <th>occupation</th>
-      <th>relationship</th>
-      <th>race</th>
-      <th>sex</th>
-      <th>capital-gain</th>
-      <th>capital-loss</th>
-      <th>hours-per-week</th>
-      <th>native-country</th>
-      <th>salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>49</td>
-      <td>Private</td>
-      <td>101320</td>
-      <td>Assoc-acdm</td>
-      <td>12.0</td>
-      <td>Married-civ-spouse</td>
-      <td>NaN</td>
-      <td>Wife</td>
-      <td>White</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>1902</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&gt;=50k</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>44</td>
-      <td>Private</td>
-      <td>236746</td>
-      <td>Masters</td>
-      <td>14.0</td>
-      <td>Divorced</td>
-      <td>Exec-managerial</td>
-      <td>Not-in-family</td>
-      <td>White</td>
-      <td>Male</td>
-      <td>10520</td>
-      <td>0</td>
-      <td>45</td>
-      <td>United-States</td>
-      <td>&gt;=50k</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>38</td>
-      <td>Private</td>
-      <td>96185</td>
-      <td>HS-grad</td>
-      <td>NaN</td>
-      <td>Divorced</td>
-      <td>NaN</td>
-      <td>Unmarried</td>
-      <td>Black</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>32</td>
-      <td>United-States</td>
-      <td>&lt;50k</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>38</td>
-      <td>Self-emp-inc</td>
-      <td>112847</td>
-      <td>Prof-school</td>
-      <td>15.0</td>
-      <td>Married-civ-spouse</td>
-      <td>Prof-specialty</td>
-      <td>Husband</td>
-      <td>Asian-Pac-Islander</td>
-      <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>United-States</td>
-      <td>&gt;=50k</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>42</td>
-      <td>Self-emp-not-inc</td>
-      <td>82297</td>
-      <td>7th-8th</td>
-      <td>NaN</td>
-      <td>Married-civ-spouse</td>
-      <td>Other-service</td>
-      <td>Wife</td>
-      <td>Black</td>
-      <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>50</td>
-      <td>United-States</td>
-      <td>&lt;50k</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -371,29 +185,6 @@ For this, we can either contruct it manually, or use one of the helper functions
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(dict_keys([&#39;categories&#39;, &#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;, &#39;sex&#39;, &#39;native-country&#39;, &#39;salary&#39;]),
- {&#39;classes&#39;: [&#39;nan&#39;,
-   &#39; Wife&#39;,
-   &#39; Not-in-family&#39;,
-   &#39; Unmarried&#39;,
-   &#39; Husband&#39;,
-   &#39; Own-child&#39;,
-   &#39; Other-relative&#39;]})</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -474,28 +265,6 @@ For this, we can either contruct it manually, or use one of the helper functions
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="extractembeds" class="doc_header"><code>extractembeds</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extractembeds</code>(<strong><code>model</code></strong>, <strong><code>embeddinglg</code></strong>:<code>str</code>, <strong><code>metadict</code></strong>, <strong><code>path</code></strong>)</p>
-</blockquote>
-
-<pre><code>model: Any pytorch model, containing a layergroup with all the embedding layers.
-embeddinglg: Name of the layer group containing the embedding layers.
-metadict: A dictionary containing relevant metadata. Check the format given in docs for further details.
-path: Path of the json</code></pre>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -510,51 +279,6 @@ path: Path of the json</code></pre>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;classes&#39;: [&#39;nan&#39;,
-  &#39; White&#39;,
-  &#39; Black&#39;,
-  &#39; Asian-Pac-Islander&#39;,
-  &#39; Amer-Indian-Eskimo&#39;,
-  &#39; Other&#39;],
- &#39;embeddings&#39;: [[-0.0019180621020495892,
-   -0.019080253317952156,
-   0.0008181656594388187,
-   0.01788151264190674],
-  [-0.0052517615258693695,
-   0.011697527952492237,
-   -0.008258289657533169,
-   0.00018684648966882378],
-  [0.0018448735354468226,
-   0.009865843690931797,
-   -0.009563969448208809,
-   -0.012679846957325935],
-  [-0.0023717426229268312,
-   0.002071694005280733,
-   -0.0027660217601805925,
-   0.006506396923214197],
-  [0.005800426006317139,
-   0.01546463929116726,
-   0.004760770592838526,
-   -0.00994172878563404],
-  [-0.0028843125328421593,
-   -0.009254083968698978,
-   0.005498375277966261,
-   -0.0025885116774588823]]}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -635,53 +359,12 @@ path: Path of the json</code></pre>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;, &#39;education-num_na&#39;]
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;race&#39;: &#39;race&#39;, &#39;workclass&#39;: &#39;workclass&#39;, &#39;gender&#39;: &#39;sex&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="TabTransfer.transfer" class="doc_header"><code>TabTransfer.transfer</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/core.py#L62" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>TabTransfer.transfer</code>(<strong><code>cat_names_to_transfer</code></strong>, <strong><code>layergroup</code></strong>, <strong><code>mapping_dict</code></strong>, <strong><code>verbose</code></strong>=<em><code>False</code></em>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -704,119 +387,6 @@ path: Path of the json</code></pre>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>mean is tensor([ 0.0041, -0.0072, -0.0091, -0.0078]) for tensor([[-0.0118, -0.0154, -0.0116, -0.0055],
-        [ 0.0281, -0.0145, -0.0503, -0.0191],
-        [-0.0276, -0.0304, -0.0122,  0.0127],
-        [ 0.0166, -0.0077,  0.0121, -0.0323],
-        [ 0.0149, -0.0247, -0.0128, -0.0176],
-        [ 0.0045,  0.0495,  0.0202,  0.0148]])
-0, &lt;class &#39;int&#39;&gt;
-Transferring weights for class #na#, cat race using mean
-old weight for class is tensor([ 0.0041, -0.0072, -0.0091, -0.0078], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0041, -0.0072, -0.0091, -0.0078], grad_fn=&lt;SliceBackward&gt;)
-1, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Amer-Indian-Eskimo, cat race from previous weights
-old weight for class is tensor([ 0.0149, -0.0247, -0.0128, -0.0176], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0149, -0.0247, -0.0128, -0.0176], grad_fn=&lt;SliceBackward&gt;)
-2, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Asian-Pac-Islander, cat race from previous weights
-old weight for class is tensor([ 0.0166, -0.0077,  0.0121, -0.0323], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0166, -0.0077,  0.0121, -0.0323], grad_fn=&lt;SliceBackward&gt;)
-3, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Black, cat race from previous weights
-old weight for class is tensor([-0.0276, -0.0304, -0.0122,  0.0127], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0276, -0.0304, -0.0122,  0.0127], grad_fn=&lt;SliceBackward&gt;)
-4, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Other, cat race from previous weights
-old weight for class is tensor([0.0045, 0.0495, 0.0202, 0.0148], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([0.0045, 0.0495, 0.0202, 0.0148], grad_fn=&lt;SliceBackward&gt;)
-5, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  White, cat race from previous weights
-old weight for class is tensor([ 0.0281, -0.0145, -0.0503, -0.0191], grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0281, -0.0145, -0.0503, -0.0191], grad_fn=&lt;SliceBackward&gt;)
-mean is tensor([-0.0037, -0.0007,  0.0016,  0.0003,  0.0027, -0.0014]) for tensor([[-0.0125, -0.0019, -0.0070, -0.0017, -0.0015,  0.0143],
-        [-0.0002, -0.0085, -0.0127, -0.0332, -0.0274, -0.0068],
-        [-0.0216, -0.0208,  0.0391,  0.0481,  0.0573,  0.0519],
-        [-0.0125, -0.0039,  0.0062, -0.0273, -0.0273, -0.0192],
-        [-0.0232,  0.0034, -0.0116,  0.0321,  0.0317, -0.0087],
-        [ 0.0282, -0.0219,  0.0100,  0.0396,  0.0077,  0.0019],
-        [-0.0218, -0.0064,  0.0136,  0.0763,  0.0721,  0.0081],
-        [-0.0052,  0.0014, -0.0276, -0.0481, -0.0369, -0.0343],
-        [ 0.0011,  0.0267, -0.0077, -0.0506, -0.0237,  0.0001],
-        [ 0.0309,  0.0252,  0.0137, -0.0322, -0.0247, -0.0210]])
-0, &lt;class &#39;int&#39;&gt;
-Transferring weights for class #na#, cat workclass using mean
-old weight for class is tensor([-0.0037, -0.0007,  0.0016,  0.0003,  0.0027, -0.0014],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0037, -0.0007,  0.0016,  0.0003,  0.0027, -0.0014],
-       grad_fn=&lt;SliceBackward&gt;)
-1, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  ?, cat workclass from previous weights
-old weight for class is tensor([-0.0052,  0.0014, -0.0276, -0.0481, -0.0369, -0.0343],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0052,  0.0014, -0.0276, -0.0481, -0.0369, -0.0343],
-       grad_fn=&lt;SliceBackward&gt;)
-2, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Federal-gov, cat workclass from previous weights
-old weight for class is tensor([ 0.0282, -0.0219,  0.0100,  0.0396,  0.0077,  0.0019],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0282, -0.0219,  0.0100,  0.0396,  0.0077,  0.0019],
-       grad_fn=&lt;SliceBackward&gt;)
-3, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Local-gov, cat workclass from previous weights
-old weight for class is tensor([-0.0218, -0.0064,  0.0136,  0.0763,  0.0721,  0.0081],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0218, -0.0064,  0.0136,  0.0763,  0.0721,  0.0081],
-       grad_fn=&lt;SliceBackward&gt;)
-4, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Never-worked, cat workclass from previous weights
-old weight for class is tensor([ 0.0309,  0.0252,  0.0137, -0.0322, -0.0247, -0.0210],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0309,  0.0252,  0.0137, -0.0322, -0.0247, -0.0210],
-       grad_fn=&lt;SliceBackward&gt;)
-5, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Private, cat workclass from previous weights
-old weight for class is tensor([-0.0002, -0.0085, -0.0127, -0.0332, -0.0274, -0.0068],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0002, -0.0085, -0.0127, -0.0332, -0.0274, -0.0068],
-       grad_fn=&lt;SliceBackward&gt;)
-6, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Self-emp-inc, cat workclass from previous weights
-old weight for class is tensor([-0.0216, -0.0208,  0.0391,  0.0481,  0.0573,  0.0519],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0216, -0.0208,  0.0391,  0.0481,  0.0573,  0.0519],
-       grad_fn=&lt;SliceBackward&gt;)
-7, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Self-emp-not-inc, cat workclass from previous weights
-old weight for class is tensor([-0.0125, -0.0039,  0.0062, -0.0273, -0.0273, -0.0192],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0125, -0.0039,  0.0062, -0.0273, -0.0273, -0.0192],
-       grad_fn=&lt;SliceBackward&gt;)
-8, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  State-gov, cat workclass from previous weights
-old weight for class is tensor([-0.0232,  0.0034, -0.0116,  0.0321,  0.0317, -0.0087],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([-0.0232,  0.0034, -0.0116,  0.0321,  0.0317, -0.0087],
-       grad_fn=&lt;SliceBackward&gt;)
-9, &lt;class &#39;int&#39;&gt;
-Transferring weights for class  Without-pay, cat workclass from previous weights
-old weight for class is tensor([ 0.0011,  0.0267, -0.0077, -0.0506, -0.0237,  0.0001],
-       grad_fn=&lt;SliceBackward&gt;)
-new weight for class is tensor([ 0.0011,  0.0267, -0.0077, -0.0506, -0.0237,  0.0001],
-       grad_fn=&lt;SliceBackward&gt;)
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 

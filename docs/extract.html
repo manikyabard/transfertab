@@ -43,6 +43,23 @@ nb_path: "nbs/01_extract.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">emb_szs</span> <span class="o">=</span> <span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 </pre></div>
 
@@ -101,7 +118,7 @@ nb_path: "nbs/01_extract.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="JSONizerWithBool" class="doc_header"><code>class</code> <code>JSONizerWithBool</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L14" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>JSONizerWithBool</code>(<strong><code>skipkeys</code></strong>=<em><code>False</code></em>, <strong><code>ensure_ascii</code></strong>=<em><code>True</code></em>, <strong><code>check_circular</code></strong>=<em><code>True</code></em>, <strong><code>allow_nan</code></strong>=<em><code>True</code></em>, <strong><code>sort_keys</code></strong>=<em><code>False</code></em>, <strong><code>indent</code></strong>=<em><code>None</code></em>, <strong><code>separators</code></strong>=<em><code>None</code></em>, <strong><code>default</code></strong>=<em><code>None</code></em>) :: <code>JSONEncoder</code></p>
+<h2 id="JSONizerWithBool" class="doc_header"><code>class</code> <code>JSONizerWithBool</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L15" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>JSONizerWithBool</code>(<strong><code>skipkeys</code></strong>=<em><code>False</code></em>, <strong><code>ensure_ascii</code></strong>=<em><code>True</code></em>, <strong><code>check_circular</code></strong>=<em><code>True</code></em>, <strong><code>allow_nan</code></strong>=<em><code>True</code></em>, <strong><code>sort_keys</code></strong>=<em><code>False</code></em>, <strong><code>indent</code></strong>=<em><code>None</code></em>, <strong><code>separators</code></strong>=<em><code>None</code></em>, <strong><code>default</code></strong>=<em><code>None</code></em>) :: <code>JSONEncoder</code></p>
 </blockquote>
 
 <pre><code>Extensible JSON &lt;http://json.org&gt; encoder for Python data structures.
@@ -159,7 +176,62 @@ implementation (to raise ``TypeError``).</code></pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="getcatdict" class="doc_header"><code>getcatdict</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>getcatdict</code>(<strong><code>df</code></strong>, <strong><code>catcols</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="getcatdict" class="doc_header"><code>getcatdict</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>getcatdict</code>(<strong><code>df</code></strong>, <strong><code>catcols</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="store_bson" class="doc_header"><code>store_bson</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>store_bson</code>(<strong><code>path</code></strong>, <strong><code>data</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="load_bson" class="doc_header"><code>load_bson</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>load_bson</code>(<strong><code>path</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -333,7 +405,8 @@ implementation (to raise ``TypeError``).</code></pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">extractembeds</span><span class="p">(</span><span class="n">embed</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embdict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">embed</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bson&quot;</span><span class="p">)</span>
+<span class="n">embdict</span>
 </pre></div>
 
     </div>
@@ -349,73 +422,221 @@ implementation (to raise ``TypeError``).</code></pre>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
-  &#39;embeddings&#39;: [[0.6051239371299744,
-    0.3564712107181549,
-    -1.5467100143432617,
-    1.5750962495803833,
-    -0.42299988865852356,
-    1.3493329286575317,
-    1.3607025146484375,
-    -1.0899522304534912,
-    -0.553862452507019,
-    1.3176639080047607],
-   [-0.07791764289140701,
-    -1.3256100416183472,
-    0.8737502098083496,
-    0.3552184998989105,
-    0.20756079256534576,
-    0.7821463942527771,
-    -0.18401317298412323,
-    1.9141485691070557,
-    1.0479087829589844,
-    0.641265332698822],
-   [0.24757033586502075,
-    0.2565772533416748,
-    1.8610639572143555,
-    0.40511053800582886,
-    -0.4214091897010803,
-    -0.6595247983932495,
-    0.35093241930007935,
-    2.0563204288482666,
-    -0.8007354736328125,
-    -2.4489898681640625]]},
+  &#39;embeddings&#39;: [[0.05603214353322983,
+    1.3744007349014282,
+    -0.31262442469596863,
+    0.37519311904907227,
+    -1.9234352111816406,
+    0.6861013770103455,
+    -1.4775152206420898,
+    1.109705924987793,
+    0.10772546380758286,
+    -1.831138014793396],
+   [-0.6345962285995483,
+    -1.946880578994751,
+    -0.3423684537410736,
+    0.04363042116165161,
+    0.2794189751148224,
+    0.06722379475831985,
+    -0.28763726353645325,
+    0.9291570782661438,
+    0.00894381757825613,
+    0.7326543927192688],
+   [0.4946509003639221,
+    -0.409279465675354,
+    0.5394951701164246,
+    0.08757159858942032,
+    -0.5254548192024231,
+    0.6215347647666931,
+    -1.835079550743103,
+    -1.5779095888137817,
+    1.0498842000961304,
+    -0.7102258801460266]]},
  &#39;cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-  &#39;embeddings&#39;: [[-1.4485093355178833,
-    -0.05285371094942093,
-    0.793982744216919,
-    0.7271164059638977,
-    1.482647180557251,
-    -0.8566319942474365,
-    0.2708490490913391,
-    -1.2901047468185425],
-   [-0.7706741690635681,
-    0.4668004512786865,
-    0.7194973230361938,
-    -0.09762431681156158,
-    -0.2809370458126068,
-    1.1799395084381104,
-    0.7642536759376526,
-    -0.15710484981536865],
-   [0.14392489194869995,
-    -0.1800917088985443,
-    1.793799638748169,
-    -0.14753146469593048,
-    -0.8234655261039734,
-    1.4736028909683228,
-    -0.26352882385253906,
-    0.3392544686794281],
-   [0.415265828371048,
-    0.7371843457221985,
-    -1.0512028932571411,
-    0.10948514193296432,
-    0.2053767889738083,
-    -0.2994846701622009,
-    -0.06890188157558441,
-    0.19717757403850555]]}}</pre>
+  &#39;embeddings&#39;: [[-0.7851612567901611,
+    1.226929783821106,
+    -0.7716110944747925,
+    0.1601991206407547,
+    -0.11754895001649857,
+    -1.1803913116455078,
+    -0.4639241397380829,
+    0.5309280157089233],
+   [0.2611830532550812,
+    0.40283119678497314,
+    0.44922569394111633,
+    -1.1285836696624756,
+    -0.016770029440522194,
+    0.9352428317070007,
+    -0.7477204203605652,
+    -0.913521409034729],
+   [-1.15754234790802,
+    -0.7661369442939758,
+    0.7403942346572876,
+    -0.3353077471256256,
+    -1.9750518798828125,
+    -0.9902587532997131,
+    1.2524845600128174,
+    -0.32062724232673645],
+   [2.371568202972412,
+    -0.7199055552482605,
+    0.41099539399147034,
+    0.5439063310623169,
+    1.0424811840057373,
+    1.1662890911102295,
+    0.028144370764493942,
+    -0.20297423005104065]]}}</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embdict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">embed</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;tempwtjson&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+<span class="n">embdict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
+  &#39;embeddings&#39;: [[0.05603214353322983,
+    1.3744007349014282,
+    -0.31262442469596863,
+    0.37519311904907227,
+    -1.9234352111816406,
+    0.6861013770103455,
+    -1.4775152206420898,
+    1.109705924987793,
+    0.10772546380758286,
+    -1.831138014793396],
+   [-0.6345962285995483,
+    -1.946880578994751,
+    -0.3423684537410736,
+    0.04363042116165161,
+    0.2794189751148224,
+    0.06722379475831985,
+    -0.28763726353645325,
+    0.9291570782661438,
+    0.00894381757825613,
+    0.7326543927192688],
+   [0.4946509003639221,
+    -0.409279465675354,
+    0.5394951701164246,
+    0.08757159858942032,
+    -0.5254548192024231,
+    0.6215347647666931,
+    -1.835079550743103,
+    -1.5779095888137817,
+    1.0498842000961304,
+    -0.7102258801460266]]},
+ &#39;cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
+  &#39;embeddings&#39;: [[-0.7851612567901611,
+    1.226929783821106,
+    -0.7716110944747925,
+    0.1601991206407547,
+    -0.11754895001649857,
+    -1.1803913116455078,
+    -0.4639241397380829,
+    0.5309280157089233],
+   [0.2611830532550812,
+    0.40283119678497314,
+    0.44922569394111633,
+    -1.1285836696624756,
+    -0.016770029440522194,
+    0.9352428317070007,
+    -0.7477204203605652,
+    -0.913521409034729],
+   [-1.15754234790802,
+    -0.7661369442939758,
+    0.7403942346572876,
+    -0.3353077471256256,
+    -1.9750518798828125,
+    -0.9902587532997131,
+    1.2524845600128174,
+    -0.32062724232673645],
+   [2.371568202972412,
+    -0.7199055552482605,
+    0.41099539399147034,
+    0.5439063310623169,
+    1.0424811840057373,
+    1.1662890911102295,
+    0.028144370764493942,
+    -0.20297423005104065]]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">load_bson</span><span class="p">(</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">embdict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;tempwtjson&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
