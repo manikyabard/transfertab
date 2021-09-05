@@ -26,7 +26,6 @@ def get_metadict_skeleton(df: pd.DataFrame, *, catcols=None, path=None):
     return metadict
 
 # Cell
-#skip
 @typedispatch
 def transferembeds_(
         dest_embeds: nn.Module,
