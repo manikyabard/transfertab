@@ -3,7 +3,6 @@
 __all__ = ['JSONizerWithBool', 'extractembeds']
 
 # Cell
-from copy import deepcopy
 import json
 import torch.nn as nn
 import pandas as pd
