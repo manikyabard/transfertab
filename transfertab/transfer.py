@@ -85,7 +85,7 @@ def transferembeds_(
 @typedispatch
 def transferembeds_(
         dest_embeds: nn.Module,
-        src_embeds: (pathlib.PosixPath, str),
+        src_embeds: pathlib.PosixPath,
         metatransfer,
         transfer_cats,
         *,
