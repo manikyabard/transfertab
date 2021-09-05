@@ -11,7 +11,6 @@ import pandas as pd
 from functools import partial
 from fastcore.foundation import *
 from fastcore.dispatch import *
-from nbdev.showdoc import *
 from .utils import *
 from .extract import *
 
