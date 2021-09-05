@@ -118,7 +118,7 @@ nb_path: "nbs/01_extract.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="JSONizerWithBool" class="doc_header"><code>class</code> <code>JSONizerWithBool</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L15" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>JSONizerWithBool</code>(<strong><code>skipkeys</code></strong>=<em><code>False</code></em>, <strong><code>ensure_ascii</code></strong>=<em><code>True</code></em>, <strong><code>check_circular</code></strong>=<em><code>True</code></em>, <strong><code>allow_nan</code></strong>=<em><code>True</code></em>, <strong><code>sort_keys</code></strong>=<em><code>False</code></em>, <strong><code>indent</code></strong>=<em><code>None</code></em>, <strong><code>separators</code></strong>=<em><code>None</code></em>, <strong><code>default</code></strong>=<em><code>None</code></em>) :: <code>JSONEncoder</code></p>
+<h2 id="JSONizerWithBool" class="doc_header"><code>class</code> <code>JSONizerWithBool</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/extract.py#L14" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>JSONizerWithBool</code>(<strong><code>skipkeys</code></strong>=<em><code>False</code></em>, <strong><code>ensure_ascii</code></strong>=<em><code>True</code></em>, <strong><code>check_circular</code></strong>=<em><code>True</code></em>, <strong><code>allow_nan</code></strong>=<em><code>True</code></em>, <strong><code>sort_keys</code></strong>=<em><code>False</code></em>, <strong><code>indent</code></strong>=<em><code>None</code></em>, <strong><code>separators</code></strong>=<em><code>None</code></em>, <strong><code>default</code></strong>=<em><code>None</code></em>) :: <code>JSONEncoder</code></p>
 </blockquote>
 
 <pre><code>Extensible JSON &lt;http://json.org&gt; encoder for Python data structures.
@@ -161,85 +161,6 @@ implementation (to raise ``TypeError``).</code></pre>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="getcatdict" class="doc_header"><code>getcatdict</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>getcatdict</code>(<strong><code>df</code></strong>, <strong><code>catcols</code></strong>=<em><code>None</code></em>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="store_bson" class="doc_header"><code>store_bson</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>store_bson</code>(<strong><code>path</code></strong>, <strong><code>data</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="load_bson" class="doc_header"><code>load_bson</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/utils.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>load_bson</code>(<strong><code>path</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -355,40 +276,7 @@ implementation (to raise ``TypeError``).</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catdict</span> <span class="o">=</span> <span class="n">getcatdict</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;cat3&quot;</span><span class="p">))</span>
-<span class="n">catdict</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;cat2&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], &#39;cat3&#39;: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;]}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;cat3&quot;</span><span class="p">)</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;cat3&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -422,69 +310,69 @@ implementation (to raise ``TypeError``).</code></pre>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
-  &#39;embeddings&#39;: [[0.05603214353322983,
-    1.3744007349014282,
-    -0.31262442469596863,
-    0.37519311904907227,
-    -1.9234352111816406,
-    0.6861013770103455,
-    -1.4775152206420898,
-    1.109705924987793,
-    0.10772546380758286,
-    -1.831138014793396],
-   [-0.6345962285995483,
-    -1.946880578994751,
-    -0.3423684537410736,
-    0.04363042116165161,
-    0.2794189751148224,
-    0.06722379475831985,
-    -0.28763726353645325,
-    0.9291570782661438,
-    0.00894381757825613,
-    0.7326543927192688],
-   [0.4946509003639221,
-    -0.409279465675354,
-    0.5394951701164246,
-    0.08757159858942032,
-    -0.5254548192024231,
-    0.6215347647666931,
-    -1.835079550743103,
-    -1.5779095888137817,
-    1.0498842000961304,
-    -0.7102258801460266]]},
+  &#39;embeddings&#39;: [[0.31570491194725037,
+    -0.07632226496934891,
+    1.5683248043060303,
+    -0.417350172996521,
+    -0.10798821598291397,
+    1.4268646240234375,
+    -0.22982962429523468,
+    -0.16915012896060944,
+    0.002859442261978984,
+    -0.4939035475254059],
+   [0.6530274748802185,
+    -0.5577511191368103,
+    -0.9275949001312256,
+    -0.06805138289928436,
+    -2.2739336490631104,
+    0.1566399186849594,
+    -0.0531904362142086,
+    -0.43463948369026184,
+    -0.0794961154460907,
+    0.4645240008831024],
+   [1.0870261192321777,
+    -0.22893156111240387,
+    -0.253396600484848,
+    -0.3393022119998932,
+    -2.0341274738311768,
+    -0.31127995252609253,
+    0.3499477803707123,
+    -1.9891204833984375,
+    0.674164891242981,
+    -1.3391718864440918]]},
  &#39;cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-  &#39;embeddings&#39;: [[-0.7851612567901611,
-    1.226929783821106,
-    -0.7716110944747925,
-    0.1601991206407547,
-    -0.11754895001649857,
-    -1.1803913116455078,
-    -0.4639241397380829,
-    0.5309280157089233],
-   [0.2611830532550812,
-    0.40283119678497314,
-    0.44922569394111633,
-    -1.1285836696624756,
-    -0.016770029440522194,
-    0.9352428317070007,
-    -0.7477204203605652,
-    -0.913521409034729],
-   [-1.15754234790802,
-    -0.7661369442939758,
-    0.7403942346572876,
-    -0.3353077471256256,
-    -1.9750518798828125,
-    -0.9902587532997131,
-    1.2524845600128174,
-    -0.32062724232673645],
-   [2.371568202972412,
-    -0.7199055552482605,
-    0.41099539399147034,
-    0.5439063310623169,
-    1.0424811840057373,
-    1.1662890911102295,
-    0.028144370764493942,
-    -0.20297423005104065]]}}</pre>
+  &#39;embeddings&#39;: [[1.3585036993026733,
+    0.024397719651460648,
+    0.4804745614528656,
+    1.1160022020339966,
+    0.8734705448150635,
+    0.784949004650116,
+    -0.5678505897521973,
+    0.33350786566734314],
+   [0.3660596013069153,
+    -0.9798707962036133,
+    -0.2037343829870224,
+    -0.22464202344417572,
+    -1.0697559118270874,
+    -0.6113787889480591,
+    -0.9179865717887878,
+    -0.8937533497810364],
+   [1.278954029083252,
+    0.18886688351631165,
+    1.2901731729507446,
+    0.5247588157653809,
+    1.2530524730682373,
+    -0.898102343082428,
+    1.1512700319290161,
+    1.5226550102233887],
+   [-0.6129401922225952,
+    -0.38670244812965393,
+    0.7002972364425659,
+    -1.2176426649093628,
+    0.5013972520828247,
+    -1.5657707452774048,
+    -2.1267337799072266,
+    0.5773623585700989]]}}</pre>
 </div>
 
 </div>
@@ -519,69 +407,69 @@ implementation (to raise ``TypeError``).</code></pre>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
-  &#39;embeddings&#39;: [[0.05603214353322983,
-    1.3744007349014282,
-    -0.31262442469596863,
-    0.37519311904907227,
-    -1.9234352111816406,
-    0.6861013770103455,
-    -1.4775152206420898,
-    1.109705924987793,
-    0.10772546380758286,
-    -1.831138014793396],
-   [-0.6345962285995483,
-    -1.946880578994751,
-    -0.3423684537410736,
-    0.04363042116165161,
-    0.2794189751148224,
-    0.06722379475831985,
-    -0.28763726353645325,
-    0.9291570782661438,
-    0.00894381757825613,
-    0.7326543927192688],
-   [0.4946509003639221,
-    -0.409279465675354,
-    0.5394951701164246,
-    0.08757159858942032,
-    -0.5254548192024231,
-    0.6215347647666931,
-    -1.835079550743103,
-    -1.5779095888137817,
-    1.0498842000961304,
-    -0.7102258801460266]]},
+  &#39;embeddings&#39;: [[0.31570491194725037,
+    -0.07632226496934891,
+    1.5683248043060303,
+    -0.417350172996521,
+    -0.10798821598291397,
+    1.4268646240234375,
+    -0.22982962429523468,
+    -0.16915012896060944,
+    0.002859442261978984,
+    -0.4939035475254059],
+   [0.6530274748802185,
+    -0.5577511191368103,
+    -0.9275949001312256,
+    -0.06805138289928436,
+    -2.2739336490631104,
+    0.1566399186849594,
+    -0.0531904362142086,
+    -0.43463948369026184,
+    -0.0794961154460907,
+    0.4645240008831024],
+   [1.0870261192321777,
+    -0.22893156111240387,
+    -0.253396600484848,
+    -0.3393022119998932,
+    -2.0341274738311768,
+    -0.31127995252609253,
+    0.3499477803707123,
+    -1.9891204833984375,
+    0.674164891242981,
+    -1.3391718864440918]]},
  &#39;cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-  &#39;embeddings&#39;: [[-0.7851612567901611,
-    1.226929783821106,
-    -0.7716110944747925,
-    0.1601991206407547,
-    -0.11754895001649857,
-    -1.1803913116455078,
-    -0.4639241397380829,
-    0.5309280157089233],
-   [0.2611830532550812,
-    0.40283119678497314,
-    0.44922569394111633,
-    -1.1285836696624756,
-    -0.016770029440522194,
-    0.9352428317070007,
-    -0.7477204203605652,
-    -0.913521409034729],
-   [-1.15754234790802,
-    -0.7661369442939758,
-    0.7403942346572876,
-    -0.3353077471256256,
-    -1.9750518798828125,
-    -0.9902587532997131,
-    1.2524845600128174,
-    -0.32062724232673645],
-   [2.371568202972412,
-    -0.7199055552482605,
-    0.41099539399147034,
-    0.5439063310623169,
-    1.0424811840057373,
-    1.1662890911102295,
-    0.028144370764493942,
-    -0.20297423005104065]]}}</pre>
+  &#39;embeddings&#39;: [[1.3585036993026733,
+    0.024397719651460648,
+    0.4804745614528656,
+    1.1160022020339966,
+    0.8734705448150635,
+    0.784949004650116,
+    -0.5678505897521973,
+    0.33350786566734314],
+   [0.3660596013069153,
+    -0.9798707962036133,
+    -0.2037343829870224,
+    -0.22464202344417572,
+    -1.0697559118270874,
+    -0.6113787889480591,
+    -0.9179865717887878,
+    -0.8937533497810364],
+   [1.278954029083252,
+    0.18886688351631165,
+    1.2901731729507446,
+    0.5247588157653809,
+    1.2530524730682373,
+    -0.898102343082428,
+    1.1512700319290161,
+    1.5226550102233887],
+   [-0.6129401922225952,
+    -0.38670244812965393,
+    0.7002972364425659,
+    -1.2176426649093628,
+    0.5013972520828247,
+    -1.5657707452774048,
+    -2.1267337799072266,
+    0.5773623585700989]]}}</pre>
 </div>
 
 </div>
@@ -639,6 +527,19 @@ implementation (to raise ``TypeError``).</code></pre>
     </div>
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Export">Export<a class="anchor-link" href="#Export"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}

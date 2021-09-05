@@ -2,13 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"JSONizerWithBool": "01_extract.ipynb",
-         "getcatdict": "01_extract.ipynb",
-         "store_bson": "01_extract.ipynb",
-         "load_bson": "01_extract.ipynb"}
+index = {"getcatdict": "00_utils.ipynb",
+         "store_bson": "00_utils.ipynb",
+         "load_bson": "00_utils.ipynb",
+         "JSONizerWithBool": "01_extract.ipynb",
+         "get_metadict_skeleton": "02_transfer.ipynb"}
 
 modules = ["utils.py",
-           "core.py"]
+           "extract.py",
+           "transfer.py"]
 
 doc_url = "https://manikyabard.github.io/transfertab/"
 

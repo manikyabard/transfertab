@@ -232,12 +232,21 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;old_cat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;old_cat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
+<span class="n">embdict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">embed2</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -245,12 +254,10 @@ nb_path: "nbs/02_transfer.ipynb"
 <div class="output_area">
 
 
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_metadict_skeleton" class="doc_header"><code>get_metadict_skeleton</code><a href="https://github.com/manikyabard/transfertab/tree/master/transfertab/transfer.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_metadict_skeleton</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>catcols</code></strong>=<em><code>None</code></em>, <strong><code>path</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
 
-<div class="output_text output_subarea output_execute_result">
-<pre>ModuleList(
-  (0): Embedding(2, 10)
-  (1): Embedding(2, 8)
-)</pre>
 </div>
 
 </div>
@@ -264,14 +271,18 @@ nb_path: "nbs/02_transfer.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;old_cat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;old_cat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
-<span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
-<span class="n">embdict</span> <span class="o">=</span> <span class="n">transfertab</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">extractembeds</span><span class="p">(</span><span class="n">embed2</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;tempwtbson&quot;</span><span class="p">)</span>
-<span class="n">embdict</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_metadict_skeleton</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -286,44 +297,8 @@ nb_path: "nbs/02_transfer.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;old_cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;],
-  &#39;embeddings&#39;: [[0.4175843298435211,
-    -1.0199278593063354,
-    -0.6709107756614685,
-    -0.500321090221405,
-    -0.13969416916370392,
-    -0.5671979188919067,
-    1.4760546684265137,
-    -0.7525286674499512,
-    0.43304163217544556,
-    -2.7244691848754883],
-   [-1.2662526369094849,
-    0.39920574426651,
-    0.1494867205619812,
-    -2.012317419052124,
-    0.7739086747169495,
-    1.636749267578125,
-    0.8324260711669922,
-    1.0281352996826172,
-    0.9744652509689331,
-    0.520490288734436]]},
- &#39;old_cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;],
-  &#39;embeddings&#39;: [[1.4979701042175293,
-    -1.1346012353897095,
-    0.05064915120601654,
-    -0.2791922688484192,
-    0.9253252148628235,
-    -0.9470803141593933,
-    0.13601328432559967,
-    0.7067786455154419],
-   [0.5263708233833313,
-    1.1203124523162842,
-    0.8524508476257324,
-    -0.8725061416625977,
-    -0.4161680340766907,
-    0.08518705517053604,
-    -1.741043210029602,
-    -0.3950035274028778]]}}</pre>
+<pre>{&#39;old_cat2&#39;: {&#39;mapped_cat&#39;: &#39;&#39;, &#39;classes_info&#39;: {&#39;a&#39;: [], &#39;b&#39;: []}},
+ &#39;old_cat3&#39;: {&#39;mapped_cat&#39;: &#39;&#39;, &#39;classes_info&#39;: {&#39;A&#39;: [], &#39;B&#39;: []}}}</pre>
 </div>
 
 </div>
@@ -363,10 +338,10 @@ nb_path: "nbs/02_transfer.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(Module,dict) -&gt; transferembeds_
+<pre>(Module,Module) -&gt; transferembeds_
+(Module,dict) -&gt; transferembeds_
 (Module,PosixPath) -&gt; transferembeds_
-(Module,str) -&gt; transferembeds_
-(Module,Module) -&gt; transferembeds_</pre>
+(Module,str) -&gt; transferembeds_</pre>
 </div>
 
 </div>
@@ -407,15 +382,15 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
-                        0.7038, -1.1020],
-                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
-                        0.9745,  0.5205],
-                      [-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
-                        0.7038, -1.1020]])),
+              tensor([[ 0.1291,  0.9989, -0.1258,  0.4697, -1.8180, -0.4062,  0.7807, -2.4058,
+                        2.2032,  1.8388],
+                      [ 0.1456,  0.2293,  0.2135,  0.4504, -1.4981, -0.2788,  0.9045,  0.1295,
+                       -0.9927, -0.0125],
+                      [-1.6132,  0.8939, -0.2192, -0.7470, -0.5318, -2.4357, -0.0404, -0.8680,
+                        0.2412,  1.8898]])),
              (&#39;1.weight&#39;,
-              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
-                      [ 1.0122, -0.0071,  0.4516, -0.5758,  0.2546, -0.4309, -0.8025,  0.1559]]))])</pre>
+              tensor([[-0.0732, -1.5366,  0.6748,  1.9617, -0.7229,  1.9168, -0.2036, -0.5741],
+                      [ 0.6987, -1.2535, -0.2394, -0.3216,  0.9821,  1.1238,  2.2877, -0.7127]]))])</pre>
 </div>
 
 </div>
@@ -449,13 +424,13 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[ 0.4176, -1.0199, -0.6709, -0.5003, -0.1397, -0.5672,  1.4761, -0.7525,
-                        0.4330, -2.7245],
-                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
-                        0.9745,  0.5205]])),
+              tensor([[-1.7019, -0.6068,  1.3590,  3.2759,  1.5049,  1.1870,  0.5087,  0.6172,
+                        0.0863, -0.5930],
+                      [-1.8109, -0.6033,  1.1796,  0.6103,  0.6482,  1.4825, -1.3552,  1.0069,
+                        0.1493, -1.3304]])),
              (&#39;1.weight&#39;,
-              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
-                      [ 0.5264,  1.1203,  0.8525, -0.8725, -0.4162,  0.0852, -1.7410, -0.3950]]))])</pre>
+              tensor([[ 2.3631,  0.1950, -1.3559,  0.0663,  0.1289,  0.5940, -0.0549,  0.2415],
+                      [ 0.6715, -1.1929, -0.2372, -1.3345, -1.2651, -0.0468, -0.0934, -2.2118]]))])</pre>
 </div>
 
 </div>
@@ -550,15 +525,15 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
-                        0.7038, -1.1020],
-                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
-                        0.9745,  0.5205],
-                      [-0.4243, -0.3104, -0.2607, -1.2563,  0.3171,  0.5348,  1.1542,  0.1378,
-                        0.7038, -1.1020]])),
+              tensor([[-1.7564, -0.6051,  1.2693,  1.9431,  1.0765,  1.3347, -0.4232,  0.8120,
+                        0.1178, -0.9617],
+                      [-1.8109, -0.6033,  1.1796,  0.6103,  0.6482,  1.4825, -1.3552,  1.0069,
+                        0.1493, -1.3304],
+                      [-1.7564, -0.6051,  1.2693,  1.9431,  1.0765,  1.3347, -0.4232,  0.8120,
+                        0.1178, -0.9617]])),
              (&#39;1.weight&#39;,
-              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
-                      [ 1.0122, -0.0071,  0.4516, -0.5758,  0.2546, -0.4309, -0.8025,  0.1559]]))])</pre>
+              tensor([[ 2.3631,  0.1950, -1.3559,  0.0663,  0.1289,  0.5940, -0.0549,  0.2415],
+                      [ 1.5173, -0.4990, -0.7966, -0.6341, -0.5681,  0.2736, -0.0741, -0.9852]]))])</pre>
 </div>
 
 </div>
@@ -592,13 +567,13 @@ nb_path: "nbs/02_transfer.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>OrderedDict([(&#39;0.weight&#39;,
-              tensor([[ 0.4176, -1.0199, -0.6709, -0.5003, -0.1397, -0.5672,  1.4761, -0.7525,
-                        0.4330, -2.7245],
-                      [-1.2663,  0.3992,  0.1495, -2.0123,  0.7739,  1.6367,  0.8324,  1.0281,
-                        0.9745,  0.5205]])),
+              tensor([[-1.7019, -0.6068,  1.3590,  3.2759,  1.5049,  1.1870,  0.5087,  0.6172,
+                        0.0863, -0.5930],
+                      [-1.8109, -0.6033,  1.1796,  0.6103,  0.6482,  1.4825, -1.3552,  1.0069,
+                        0.1493, -1.3304]])),
              (&#39;1.weight&#39;,
-              tensor([[ 1.4980, -1.1346,  0.0506, -0.2792,  0.9253, -0.9471,  0.1360,  0.7068],
-                      [ 0.5264,  1.1203,  0.8525, -0.8725, -0.4162,  0.0852, -1.7410, -0.3950]]))])</pre>
+              tensor([[ 2.3631,  0.1950, -1.3559,  0.0663,  0.1289,  0.5940, -0.0549,  0.2415],
+                      [ 0.6715, -1.1929, -0.2372, -1.3345, -1.2651, -0.0468, -0.0934, -2.2118]]))])</pre>
 </div>
 
 </div>
@@ -622,6 +597,19 @@ nb_path: "nbs/02_transfer.ipynb"
     </div>
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Export">Export<a class="anchor-link" href="#Export"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}

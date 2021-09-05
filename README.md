@@ -2,6 +2,14 @@
 > Allow transfer learning using structured data.
 
 
+```python
+# #hide
+# from transfertab.core import *
+# from nbdev.showdoc import *
+# from fastai.tabular.all import *
+# from transfertab.utils import *
+```
+
 ## Install
 
 ```bash
@@ -20,7 +28,7 @@ To make use of `transfertab`, you'll need
 
 Here we'll quickly construct a `ModuleList` with a bunch of `Embedding` layers, and see how to transfer it's embeddings.
 
-```
+```python
 # #hide
 # path = untar_data(URLs.ADULT_SAMPLE)
 # df1 = pd.read_csv(path/'adult.csv')
@@ -66,18 +74,18 @@ This involves storing the embeddings present in the model to a `json` structure.
 To start with the Extraction process, first we need a `metadict` containing information about the dataset on which the initial model was trained on.  
 For this, we can either contruct it manually, or use one of the helper functions provided in the library.
 
-```
+```python
 # df1.head()
 ```
 
-```
+```python
 # meta = extract_meta_from_df(df1)
 # meta.keys(), meta['relationship']
 ```
 
 If we want to manually define which categories we want to extract, we can do so by defining a meta dict as shown here -
 
-```
+```python
 
 # meta = {
 #     "categories":['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
@@ -118,14 +126,14 @@ More information about the metadict format can be found in the docs.
 
 Now that we have out meta dictionary, we can start extracting the embeddings, using `extractembeds`.
 
-```
+```python
 # emb_details = extractembeds(learn1.model, 'embeds', meta, '../data/adult.json')
 # emb_details['race']
 ```
 
 The embeddings will be stored in a `json` file in the given `path`. Now this file can be used to transfer these embeddings to another model.
 
-```
+```python
 # tabobj = TabTransfer(learn1)
 ```
 
@@ -133,14 +141,14 @@ Now after creating a `TabTransfer` object, we need to initialize this with eithe
 1. The path of the `json` which we just constructed.
 2. The directory which contains multiple `json` files constructed using the same method, but containing various embeddings for different categorical variables needed to be transferred.
 
-```
+```python
 # #skip
 # tabobj.init_from_json("../data/adults.json")
 ```
 
 There might be a case where the name of the categorical variables present in the `json` might differ from the ones present in the new model's learner. For this we can use a `mapping_dict` which maps old variable names to new ones. This can be created using the `mapping` function of the object and pass it the categorical values to transfer.
 
-```
+```python
 # #skip
 # mapping_dict = tabobj.mapping(["race", "workclass", "gender"])
 # mapping_dict
@@ -148,7 +156,7 @@ There might be a case where the name of the categorical variables present in the
 
 As we can see, the transfer process will start after running `tabobj.transfer` function.
 
-```
+```python
 # #skip
 # tabobj.transfer(["race", "workclass", "gender"], "embeds", {"race":"race", "workclass": "workclass", "gender":"sex"}, verbose = True)
 ```
