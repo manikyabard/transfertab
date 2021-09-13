@@ -21,6 +21,9 @@ entries:
     - output: web,pdf
       title: Experiments with loading 01
       url: load_tests.html
+    - output: web,pdf
+      title: Step 9
+      url: Exp1(a).html
     output: web
     title: transfertab
   output: web

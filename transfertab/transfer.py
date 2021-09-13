@@ -65,7 +65,6 @@ def transferembeds_(
         transfer_cats,
         *,
         newcatcols,
-        oldcatcols,
         newcatdict,
         aggfn = partial(torch.mean, dim=0)):
     dest_state_dict = L(dest_embeds.state_dict().items())
@@ -96,7 +95,7 @@ def transferembeds_(
             src_embeds = json.loads(fp.read())
     else:
         src_embeds = load_bson(src_embeds)
-    transferembeds_(dest_embeds, src_embeds, metatransfer, transfer_cats, **kwargs);
+    transferembeds_(dest_embeds, src_embeds, metatransfer, transfer_cats, **kwargs)
 
 
 # Cell
