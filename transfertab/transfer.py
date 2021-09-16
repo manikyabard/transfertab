@@ -30,10 +30,10 @@ def get_metadict_skeleton(df: pd.DataFrame, *, catcols=None, path=None):
 def transferembeds_(
         dest_embeds: nn.Module,
         src_embeds: nn.Module,
-        /,
+#         /,
         metatransfer,
         transfer_cats,
-        *,
+#         *,
         newcatcols,
         oldcatcols,
         oldcatdict,
@@ -57,13 +57,14 @@ def transferembeds_(
             new_ps = torch.cat((new_ps, ps), dim=1)
         dest_embeds.state_dict()[dest_state_dict[newidx][0]].copy_(new_ps.T)
 
+# Cell
 @typedispatch
 def transferembeds_(
         dest_embeds: nn.Module,
         src_embeds: dict,
         metatransfer,
         transfer_cats,
-        *,
+#         *,
         newcatcols,
         newcatdict,
         aggfn = partial(torch.mean, dim=0)):
@@ -80,14 +81,14 @@ def transferembeds_(
             new_ps = torch.cat((new_ps, ps), dim=1)
         dest_embeds.state_dict()[dest_state_dict[newidx][0]].copy_(new_ps.T)
 
-
+# Cell
 @typedispatch
 def transferembeds_(
         dest_embeds: nn.Module,
         src_embeds: pathlib.PosixPath,
         metatransfer,
         transfer_cats,
-        *,
+#         *,
         kind = "bson",
         **kwargs):
     if kind == "json":
@@ -96,7 +97,6 @@ def transferembeds_(
     else:
         src_embeds = load_bson(src_embeds)
     transferembeds_(dest_embeds, src_embeds, metatransfer, transfer_cats, **kwargs)
-
 
 # Cell
 #skip
