@@ -18,9 +18,6 @@ entries:
     - output: web,pdf
       title: Transfer
       url: transfer.html
-    - output: web,pdf
-      title: Experiments with loading 01
-      url: load_tests.html
     output: web
     title: transfertab
   output: web

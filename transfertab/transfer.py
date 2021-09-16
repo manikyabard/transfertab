@@ -31,10 +31,10 @@ def get_metadict_skeleton(df: pd.DataFrame, *, catcols=None, path=None):
 def transferembeds_(
         dest_embeds: nn.Module,
         src_embeds: nn.Module,
-        /,
+        # /,
         metatransfer,
         transfer_cats,
-        *,
+        # *,
         newcatcols,
         oldcatcols,
         oldcatdict,
@@ -64,7 +64,7 @@ def transferembeds_(
         src_embeds: dict,
         metatransfer,
         transfer_cats,
-        *,
+        # *,
         newcatcols,
         oldcatcols,
         newcatdict,
@@ -89,7 +89,7 @@ def transferembeds_(
         src_embeds: (pathlib.PosixPath, str),
         metatransfer,
         transfer_cats,
-        *,
+        # *,
         kind = "bson",
         **kwargs):
     if kind == "json":
