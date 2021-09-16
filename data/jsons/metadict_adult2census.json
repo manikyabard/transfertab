@@ -1,0 +1,79 @@
+{
+    " workclass": {
+        "mapped_cat": "class of worker",
+        "classes_info": {
+            " Private": [" Private"],
+            " Self-emp-inc": [" Self-employed-incorporated"],
+            " Self-emp-not-inc": [" Self-employed-not incorporated"],
+            " State-gov": [" State government"],
+            " Federal-gov": [" Federal government"],
+            " Local-gov": [" Local government"],
+            " ?": [" Not in universe"],
+            " Without-pay": [" Without pay"],
+            " Never-worked": [" Never worked"],
+            "#na#": ["#na#"]
+        }
+    },
+    " education": {
+        "mapped_cat": "education",
+        "classes_info": {
+            " Assoc-acdm": [
+                " Associates degree-academic program",
+                " Associates degree-occup /vocational"
+                ],
+            " Masters": [" Masters degree(MA MS MEng MEd MSW MBA)"],
+            " HS-grad": [" High school graduate"],
+            " Prof-school": [" Prof school degree (MD DDS DVM LLB JD)"],
+            " 7th-8th": [" 7th and 8th grade"],
+            " Some-college": [" Some college but no degree"],
+            " 11th": [" 11th grade"],
+            " Bachelors": [" Bachelors degree(BA AB BS)"],
+            " Assoc-voc": [" Associates degree-occup /vocational"],
+            " 10th": [" 10th grade"],
+            " 9th": [" 9th grade"],
+            " Doctorate": [" Doctorate degree(PhD EdD)"],
+            " 12th": [" 12th grade no diploma"],
+            " 1st-4th": [" 1st 2nd 3rd or 4th grade", " Children"],
+            " 5th-6th": [" 5th or 6th grade", " Children"],
+            " Preschool": [" Less than 1st grade", " Children"],
+            "#na#": ["#na#"]
+        }
+    },
+    " marital_status": {
+        "mapped_cat": "marital stat",
+        "classes_info": {
+            " Married-civ-spouse": [" Married-civilian spouse present"],
+            " Divorced": [" Divorced"],
+            " Never-married": [" Never married"],
+            " Widowed": [" Widowed"],
+            " Married-spouse-absent": [" Married-spouse absent"],
+            " Separated": [" Separated"],
+            " Married-AF-spouse": [" Married-A F spouse present"],
+            "#na#": ["#na#"]
+        }
+    },
+    " relationship": {
+        "mapped_cat": "detailed household and family stat",
+        "classes_info": {
+            " Wife": [" Spouse of householder"],
+            " Not-in-family": [" Secondary individual", " Nonfamily householder"],
+            " Unmarried": [" Householder"],
+            " Husband": [" Spouse of householder"],
+            " Own-child": [" Householder", " Child <18 never marr RP of subfamily"],
+            " Other-relative": [" Other Rel 18+ ever marr not in subfamily", ""],
+            "#na#": ["#na#"]
+        }
+    },
+    " race": {
+        "mapped_cat": "race",
+        "classes_info": {
+            " White": [" White"],
+            " Black": [" Black"],
+            " Asian-Pac-Islander": [" Asian or Pacific Islander"],
+            " Amer-Indian-Eskimo": [" Amer Indian Aleut or Eskimo"],
+            " Other": [" Other"],
+            "#na#": ["#na#"]
+        }
+    }
+}
+      
