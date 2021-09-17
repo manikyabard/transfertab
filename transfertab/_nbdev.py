@@ -5,6 +5,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"getcatdict": "00_utils.ipynb",
          "store_bson": "00_utils.ipynb",
          "load_bson": "00_utils.ipynb",
+         "generate_files_embedprojector_for_comparision": "00_utils.ipynb",
          "JSONizerWithBool": "01_extract.ipynb",
          "get_metadict_skeleton": "02_transfer.ipynb"}
 
