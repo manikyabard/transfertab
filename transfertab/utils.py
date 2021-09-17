@@ -4,7 +4,8 @@ __all__ = ['getcatdict', 'store_bson', 'load_bson', 'generate_files_embedproject
 
 # Cell
 import bson
-import csv
+import json
+from pathlib import Path
 
 # Cell
 def getcatdict(df, catcols=None, add_na=False):
@@ -26,6 +27,30 @@ def load_bson(path):
     with open(path, "rb") as fp:
         bdata = fp.read()
     return bson.loads(bdata)
+
+# Cell
+def _load_extractembeds_from_dir(path):
+    path = Path(path)
+    json_file = {}
+    if path.is_dir():
+        for json_f in path.glob("*.json"):
+            f = open(json_f, 'rb')
+            file = json.load(f)
+            for i in file.keys():
+                json_file[i] = file[i]
+        for bson_f in path.glob("*.bson"):
+            file = load_bson(bson_f)
+            for i in file.keys():
+                json_file[i] = file[i]
+    return json_file
+
+# Cell
+def _check_embdict_validity(embdict):
+    for catcol, info in embdict.items():
+        if set(list(info.keys())) == set(('classes', 'embeddings')) :
+            class_len = len(info['classes'])
+            embedding_len =  len(info['embeddings'])
+            assert class_len == embedding_len, f"Class Size of {class_len} and Embedding size of {embedding_len} does not match for {catcol}"
 
 # Cell
 def generate_files_embedprojector_for_comparision(model1_path, model2_path, dir_path):
