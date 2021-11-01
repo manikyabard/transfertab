@@ -1,0 +1,183 @@
+wandb_version: 1
+
+FetchPredsCallback:
+  desc: null
+  value:
+    dl:
+      _name: <fastai.tabular.core.TabDataLoader object at 0x7fe6ae651c70>
+      bs: 256
+      dataset: "            age  job  marital  education  default  housing  loan \
+        \ contact  \\\n37657 -0.209563    1        2          7        1        1\
+        \     3        1   \n38259 -0.769955    5        2          7        1   \
+        \     3     1        1   \n31582 -0.049451    3        2          8      \
+        \  1        3     3        1   \n32718 -0.850011   10        3          3\
+        \        1        3     1        1   \n39264  2.672452    6        2     \
+        \     1        1        3     1        1   \n...         ...  ...      ...\
+        \        ...      ...      ...   ...      ...   \n35645  0.030605    1   \
+        \     3          4        1        3     1        1   \n33743  0.270773  \
+        \  2        2          1        1        1     3        1   \n39948 -0.209563\
+        \   11        3          7        1        1     1        1   \n34058 -0.689899\
+        \    2        2          3        2        3     3        1   \n30281  0.270773\
+        \   10        3          7        1        1     1        1   \n\n       month\
+        \  day_of_week  ...  campaign     pdays  previous  poutcome  \\\n37657   \
+        \   2            4  ... -0.665062  0.364266  0.664198         1   \n38259\
+        \      9            4  ... -0.054763  0.364266 -0.640571         2   \n31582\
+        \      7            3  ...  0.555536  0.364266 -0.640571         2   \n32718\
+        \      7            2  ... -0.665062  0.364266  0.664198         1   \n39264\
+        \      6            2  ... -0.054763  0.364266  0.664198         1   \n...\
+        \      ...          ...  ...       ...       ...       ...       ...   \n\
+        35645      7            2  ... -0.665062  0.364266 -0.640571         2   \n\
+        33743      7            5  ... -0.665062  0.364266  0.664198         1   \n\
+        39948      5            1  ... -0.054763  0.364266 -0.640571         2   \n\
+        34058      7            5  ... -0.054763  0.364266  0.664198         1   \n\
+        30281      1            3  ... -0.665062  0.364266 -0.640571         2   \n\
+        \n       emp.var.rate  cons.price.idx  cons.conf.idx  euribor3m  nr.employed\
+        \  y  \n37657     -1.388808       -1.548372       1.678889  -1.111749    \
+        \ 0.149730  0  \n38259     -2.219763       -1.116852       2.381269  -1.577471\
+        \    -1.188281  1  \n31582      0.439292       -0.250077      -0.631163  \
+        \ 0.751139     0.671710  0  \n32718      0.439292       -0.250077      -0.631163\
+        \   0.639684     0.671710  0  \n39264      0.439292        0.642978      \
+        \ 1.148201  -1.959601    -1.388864  0  \n...             ...             ...\
+        \            ...        ...          ... ..  \n35645      0.439292       -0.250077\
+        \      -0.631163   0.420755     0.671710  0  \n33743      0.439292       -0.250077\
+        \      -0.631163   0.568035     0.671710  0  \n39948      0.605483       \
+        \ 1.930008       0.367778  -1.553587    -1.778643  0  \n34058      0.439292\
+        \       -0.250077      -0.631163   0.568035     0.671710  0  \n30281     \
+        \ 0.439292        0.091380      -0.771639   0.902399     0.671710  0  \n\n\
+        [128 rows x 21 columns]"
+      device: cpu
+      drop_last: false
+      indexed: true
+      n: 128
+      pin_memory: false
+      shuffle: false
+      timeout: 0
+    ds_idx: 1
+    reorder: true
+    with_decoded: true
+    with_input: true
+Learner:
+  desc: null
+  value:
+    _name: <fastai.tabular.learner.TabularLearner object at 0x7fe6ae61c460>
+    loss_func:
+      _name:
+        _name:
+          _name: FlattenedLoss of CrossEntropyLoss()
+          axis: -1
+          flatten: true
+          floatify: false
+          is_2d: true
+        axis: -1
+        flatten: true
+        floatify: false
+        is_2d: true
+      axis: -1
+      flatten: true
+      floatify: false
+      is_2d: true
+    lr: 0.001
+    metrics: fastai.metrics.accuracy
+    model_dir: models
+    moms:
+    - 0.95
+    - 0.85
+    - 0.95
+    opt_func: fastai.optimizer.Adam
+    path: .
+    splitter: fastai.torch_core.trainable_params
+    train_bn: true
+    wd: null
+    wd_bn_bias: false
+ParamScheduler:
+  desc: null
+  value: true
+ProgressCallback:
+  desc: null
+  value: true
+Recorder:
+  desc: null
+  value:
+    add_time: true
+    train_metrics: false
+    valid_metrics: true
+SaveModelCallback:
+  desc: null
+  value:
+    at_end: false
+    every_epoch: false
+    fname: model
+    with_opt: false
+TrainEvalCallback:
+  desc: null
+  value: true
+WandbCallback:
+  desc: null
+  value:
+    dataset_name: bank 0.3%
+    log: all
+    log_dataset: false
+    log_model: true
+    log_preds: true
+    n_preds: 128
+    reorder: true
+    seed: 1
+    valid_dl: null
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.32
+    framework: fastai
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    python_version: 3.9.4
+    session_history: code/_session_history.ipynb
+    t:
+      1:
+      - 1
+      - 4
+      - 5
+      2:
+      - 1
+      - 4
+      - 5
+      3:
+      - 2
+      4: 3.9.4
+      5: 0.10.32
+      8:
+      - 1
+      - 5
+batch per epoch:
+  desc: null
+  value: 38
+batch size:
+  desc: null
+  value: 256
+device:
+  desc: null
+  value: cpu
+frozen:
+  desc: null
+  value: false
+frozen idx:
+  desc: null
+  value: 0
+input 1 dim 1:
+  desc: null
+  value: 256
+input 1 dim 2:
+  desc: null
+  value: 10
+input 2 dim 1:
+  desc: null
+  value: 256
+input 2 dim 2:
+  desc: null
+  value: 10
+model parameters:
+  desc: null
+  value: 31322
+n_inp:
+  desc: null
+  value: 2

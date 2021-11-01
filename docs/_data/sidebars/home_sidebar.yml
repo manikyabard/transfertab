@@ -18,12 +18,6 @@ entries:
     - output: web,pdf
       title: Transfer
       url: transfer.html
-    - output: web,pdf
-      title: Experiment 1a
-      url: Exp1(a).html
-    - output: web,pdf
-      title: Experiment 1c
-      url: Exp1(c).html
     output: web
     title: transfertab
   output: web

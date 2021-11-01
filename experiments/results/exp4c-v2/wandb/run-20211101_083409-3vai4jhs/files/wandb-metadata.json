@@ -1,0 +1,32 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.4",
+    "heartbeatAt": "2021-11-01T03:04:12.790259",
+    "startedAt": "2021-11-01T03:04:09.048547",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--ip=127.0.0.1",
+        "--stdin=9003",
+        "--control=9001",
+        "--hb=9000",
+        "--Session.signature_scheme=\"hmac-sha256\"",
+        "--Session.key=b\"b49521eb-8126-433c-86e5-61633c530120\"",
+        "--shell=9002",
+        "--transport=\"tcp\"",
+        "--iopub=9004",
+        "--f=/var/folders/7s/4bn01m0j349fqfypmqr0pvl40000gn/T/tmp-4503436aPIjpolHsb.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/manikyabard/transfertab",
+        "commit": "904d94426f05276a2f98b2f03ad40aefac9f5dbc"
+    },
+    "email": "manikyabard@gmail.com",
+    "root": "/Users/manikyabardhan/Documents/github/transfertab",
+    "host": "Manikyas-MacBook-Pro.local",
+    "username": "manikyabardhan",
+    "executable": "/Users/manikyabardhan/anaconda3/envs/fastenv/bin/python"
+}

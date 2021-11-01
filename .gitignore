@@ -141,3 +141,5 @@ checklink/cookies.txt
 
 nbs/wandb/*
 nbs/.ipynb_checkpoints
+
+data/datasets/*

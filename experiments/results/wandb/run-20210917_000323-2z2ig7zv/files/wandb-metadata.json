@@ -1,0 +1,24 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.4",
+    "heartbeatAt": "2021-09-16T18:33:26.628292",
+    "startedAt": "2021-09-16T18:33:23.155878",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "-f",
+        "/Users/manikyabardhan/Library/Jupyter/runtime/kernel-b1facff3-334e-47f1-987c-9bc0c97ae60f.json"
+    ],
+    "state": "running",
+    "program": "nbs/Exp1(c).ipynb",
+    "root": "/Users/manikyabardhan/Documents/github/transfertab",
+    "git": {
+        "remote": "https://github.com/manikyabard/transfertab",
+        "commit": "01adff018b09ad85ff6bf528f2a2e87bf2937e8e"
+    },
+    "email": "manikyabard@gmail.com",
+    "host": "Manikyas-MacBook-Pro.local",
+    "username": "manikyabardhan",
+    "executable": "/Users/manikyabardhan/anaconda3/envs/fastenv/bin/python"
+}
