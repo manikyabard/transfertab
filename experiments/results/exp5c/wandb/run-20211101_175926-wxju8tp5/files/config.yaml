@@ -1,0 +1,183 @@
+wandb_version: 1
+
+Learner:
+  desc: null
+  value:
+    _name: <fastai.tabular.learner.TabularLearner object at 0x7fead3ce1be0>
+    loss_func:
+      _name: FlattenedLoss of CrossEntropyLoss()
+      axis: -1
+      flatten: true
+      floatify: false
+      is_2d: true
+    lr: 0.001
+    metrics:
+    - _name: <fastai.metrics.AccumMetric object at 0x7fead36b9190>
+      activation: binarysoftmax
+      dim_argmax: -1
+      flatten: true
+      func: sklearn.metrics._ranking.roc_auc_score
+      thresh: null
+    - fastai.metrics.accuracy
+    model_dir: models
+    moms:
+    - 0.95
+    - 0.85
+    - 0.95
+    opt_func: fastai.optimizer.Adam
+    path: .
+    splitter: fastai.torch_core.trainable_params
+    train_bn: true
+    wd: null
+    wd_bn_bias: false
+ParamScheduler:
+  desc: null
+  value: true
+ProgressCallback:
+  desc: null
+  value: true
+Recorder:
+  desc: null
+  value:
+    add_time: true
+    train_metrics: false
+    valid_metrics: true
+SaveModelCallback:
+  desc: null
+  value:
+    at_end: false
+    every_epoch: false
+    fname: model
+    with_opt: false
+TrainEvalCallback:
+  desc: null
+  value: true
+WandbCallback:
+  desc: null
+  value:
+    dataset_name: online_shoppers_intention (first .6)
+    log: all
+    log_dataset: false
+    log_model: true
+    log_preds: false
+    n_preds: 0
+    reorder: true
+    seed: 1
+    valid_dl:
+      _name: <fastai.tabular.core.TabDataLoader object at 0x7fead3d92eb0>
+      bs: 512
+      dataset: "       Administrative  Administrative_Duration  Informational  \\\n\
+        10014               3                 0.839541              1   \n11101  \
+        \             1                -0.464064              1   \n8139         \
+        \       3                -0.103892              1   \n9754               \
+        \ 1                -0.464064              1   \n9962                5    \
+        \             0.527527              2   \n...               ...          \
+        \            ...            ...   \n11542              11                \
+        \ 1.159843              1   \n7955                2                -0.310677\
+        \              1   \n9313                1                -0.464064      \
+        \        1   \n9550                2                -0.399555            \
+        \  1   \n8818                1                -0.464064              1   \n\
+        \n       Informational_Duration  ProductRelated  ProductRelated_Duration \
+        \ \\\n10014               -0.256018              60                 1.496969\
+        \   \n11101               -0.256018              11                -0.570932\
+        \   \n8139                -0.256018              11                -0.545007\
+        \   \n9754                -0.256018              10                -0.455374\
+        \   \n9962                -0.204362              45                -0.046776\
+        \   \n...                       ...             ...                      ...\
+        \   \n11542               -0.256018              82                 0.116027\
+        \   \n7955                -0.256018              62                 0.213650\
+        \   \n9313                -0.256018              50                 0.321691\
+        \   \n9550                -0.256018              23                -0.281021\
+        \   \n8818                -0.256018             101                 1.586224\
+        \   \n\n       BounceRates  ExitRates  PageValues  SpecialDay  Month  \\\n\
+        10014    -0.286140  -0.123298   -0.326335           1      2   \n11101   \
+        \  0.859971   0.646707   -0.326335           1      5   \n8139      0.742506\
+        \   0.537193   -0.326335           1      5   \n9754     -0.432141   0.094144\
+        \   -0.326335           1      5   \n9962     -0.057616  -0.295952    0.204089\
+        \           1      5   \n...            ...        ...         ...       \
+        \  ...    ...   \n11542    -0.432141  -0.805058    0.498267           1  \
+        \    5   \n7955     -0.361534  -0.532559   -0.224035           1      1  \
+        \ \n9313     -0.256344  -0.116683   -0.326335           1      5   \n9550\
+        \     -0.338510  -0.428128   -0.326335           1      5   \n8818     -0.227044\
+        \  -0.309666    0.100346           1      5   \n\n       OperatingSystems\
+        \  Browser  Region  TrafficType  VisitorType  Weekend  \\\n10014         \
+        \        2        5       3            2            3        2   \n11101 \
+        \                2        2       9            1            3        2   \n\
+        8139                  3        2       3           11            3       \
+        \ 2   \n9754                  2        2       6           11            3\
+        \        1   \n9962                  1        2       3            1     \
+        \       3        2   \n...                 ...      ...     ...          ...\
+        \          ...      ...   \n11542                 1        1       1     \
+        \       8            1        2   \n7955                  2        5     \
+        \  3            2            3        1   \n9313                  2      \
+        \  2       8            1            3        1   \n9550                 \
+        \ 2        2       1            2            1        1   \n8818         \
+        \         2        2       7            2            3        2   \n\n   \
+        \    Revenue  \n10014        0  \n11101        0  \n8139         0  \n9754\
+        \         0  \n9962         0  \n...        ...  \n11542        0  \n7955\
+        \         0  \n9313         0  \n9550         0  \n8818         1  \n\n[4882\
+        \ rows x 18 columns]"
+      device: cpu
+      drop_last: true
+      indexed: true
+      n: 4882
+      pin_memory: false
+      shuffle: true
+      timeout: 0
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.32
+    framework: fastai
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    python_version: 3.9.4
+    t:
+      1:
+      - 1
+      - 4
+      - 5
+      2:
+      - 1
+      - 4
+      - 5
+      3:
+      - 2
+      4: 3.9.4
+      5: 0.10.32
+      8:
+      - 1
+      - 5
+batch per epoch:
+  desc: null
+  value: 14
+batch size:
+  desc: null
+  value: 512
+device:
+  desc: null
+  value: cpu
+frozen:
+  desc: null
+  value: false
+frozen idx:
+  desc: null
+  value: 0
+input 1 dim 1:
+  desc: null
+  value: 512
+input 1 dim 2:
+  desc: null
+  value: 11
+input 2 dim 1:
+  desc: null
+  value: 512
+input 2 dim 2:
+  desc: null
+  value: 6
+model parameters:
+  desc: null
+  value: 49128
+n_inp:
+  desc: null
+  value: 2

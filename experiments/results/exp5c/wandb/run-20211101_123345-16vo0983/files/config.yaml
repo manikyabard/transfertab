@@ -1,0 +1,152 @@
+wandb_version: 1
+
+FetchPredsCallback:
+  desc: null
+  value:
+    dl:
+      _name: <fastai.tabular.core.TabDataLoader object at 0x7fead3725370>
+      bs: 512
+      dataset: 'Empty DataFrame
+
+        Columns: [Administrative, Administrative_Duration, Informational, Informational_Duration,
+        ProductRelated, ProductRelated_Duration, BounceRates, ExitRates, PageValues,
+        SpecialDay, Month, OperatingSystems, Browser, Region, TrafficType, VisitorType,
+        Weekend, Revenue]
+
+        Index: []'
+      device: cpu
+      drop_last: false
+      indexed: true
+      n: 0
+      pin_memory: false
+      shuffle: false
+      timeout: 0
+    ds_idx: 1
+    reorder: true
+    with_decoded: true
+    with_input: true
+Learner:
+  desc: null
+  value:
+    _name: <fastai.tabular.learner.TabularLearner object at 0x7fead3bf59a0>
+    loss_func:
+      _name:
+        _name:
+          _name: FlattenedLoss of CrossEntropyLoss()
+          axis: -1
+          flatten: true
+          floatify: false
+          is_2d: true
+        axis: -1
+        flatten: true
+        floatify: false
+        is_2d: true
+      axis: -1
+      flatten: true
+      floatify: false
+      is_2d: true
+    lr: 0.001
+    metrics:
+    - _name: <fastai.metrics.AccumMetric object at 0x7feacb671be0>
+      activation: binarysoftmax
+      dim_argmax: -1
+      flatten: true
+      func: sklearn.metrics._ranking.roc_auc_score
+      thresh: null
+    - fastai.metrics.accuracy
+    model_dir: models
+    moms:
+    - 0.95
+    - 0.85
+    - 0.95
+    opt_func: fastai.optimizer.Adam
+    path: .
+    splitter: fastai.torch_core.trainable_params
+    train_bn: true
+    wd: null
+    wd_bn_bias: false
+ParamScheduler:
+  desc: null
+  value: true
+ProgressCallback:
+  desc: null
+  value: true
+Recorder:
+  desc: null
+  value:
+    add_time: true
+    train_metrics: false
+    valid_metrics: true
+SaveModelCallback:
+  desc: null
+  value:
+    at_end: false
+    every_epoch: false
+    fname: model
+    with_opt: false
+TrainEvalCallback:
+  desc: null
+  value: true
+WandbCallback:
+  desc: null
+  value:
+    dataset_name: online_shoppers_intention (first .6)
+    log: all
+    log_dataset: false
+    log_model: true
+    log_preds: false
+    n_preds: 0
+    reorder: true
+    seed: 1
+    valid_dl: null
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.32
+    framework: fastai
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    python_version: 3.9.4
+    t:
+      1:
+      - 1
+      - 4
+      - 5
+      4: 3.9.4
+      5: 0.10.32
+      8:
+      - 1
+      - 5
+batch per epoch:
+  desc: null
+  value: 14
+batch size:
+  desc: null
+  value: 512
+device:
+  desc: null
+  value: cpu
+frozen:
+  desc: null
+  value: false
+frozen idx:
+  desc: null
+  value: 0
+input 1 dim 1:
+  desc: null
+  value: 512
+input 1 dim 2:
+  desc: null
+  value: 11
+input 2 dim 1:
+  desc: null
+  value: 512
+input 2 dim 2:
+  desc: null
+  value: 6
+model parameters:
+  desc: null
+  value: 49234
+n_inp:
+  desc: null
+  value: 2
