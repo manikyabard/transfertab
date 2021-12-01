@@ -29,26 +29,6 @@ nb_path: "nbs/index.ipynb"
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from transfertab.core import *</span>
-<span class="c1"># from nbdev.showdoc import *</span>
-<span class="c1"># from fastai.tabular.all import *</span>
-<span class="c1"># from transfertab.utils import *</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
@@ -57,9 +37,7 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span>git clone www.github.com/manikyabard/transfertab
-<span class="nb">cd</span> transfertab
-pip install -e .
+<div class="highlight"><pre><span></span>pip install transfertab
 </pre></div>
 
 </div>
@@ -90,6 +68,23 @@ pip install -e .
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>The whole process takes place in two main steps-</p>
+
+<pre><code>1. Extraction  
+2. Transfer</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Extraction">Extraction<a class="anchor-link" href="#Extraction"> </a></h3><p>This involves storing the embeddings present in the model to a <code>JSON</code> structure. This <code>JSON</code> would contain the embeddings related to the categorical variables, and can be later transfered to another model which can also benefit from these categories. It will also be possible to have multiple <code>JSON</code> files constructed from various models with different categorical variables and then use them together.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Here we'll quickly construct a <code>ModuleList</code> with a bunch of <code>Embedding</code> layers, and see how to transfer it's embeddings.</p>
 
 </div>
@@ -102,89 +97,8 @@ pip install -e .
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># path = untar_data(URLs.ADULT_SAMPLE)</span>
-<span class="c1"># df1 = pd.read_csv(path/&#39;adult.csv&#39;)</span>
-<span class="c1"># splits1 = RandomSplitter(valid_pct=0.2)(range_of(df1))</span>
-<span class="c1"># to1 = TabularPandas(df1, procs=[Categorify, FillMissing,Normalize],</span>
-<span class="c1">#                    cat_names = [&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;],</span>
-<span class="c1">#                    cont_names = [&#39;age&#39;, &#39;fnlwgt&#39;, &#39;education-num&#39;],</span>
-<span class="c1">#                    y_names=&#39;salary&#39;,</span>
-<span class="c1">#                    splits=splits1)</span>
-<span class="c1"># dls1 = to1.dataloaders(bs=64)</span>
-<span class="c1"># learn1 = tabular_learner(dls1, metrics=accuracy)</span>
-
-<span class="c1"># #We add robot to our &quot;race&quot; column</span>
-<span class="c1"># new_rows = pd.DataFrame([[49,&#39;Private&#39;,101320,&#39;Assoc-acdm&#39;,12.0,&#39;Married-civ-spouse&#39;,&#39;Exec-managerial&#39;,&#39;Wife&#39;,&#39;Robot&#39;,&#39;Female&#39;,0,1902,40,&#39;United-States&#39;,&#39;&gt;=50k&#39;],</span>
-<span class="c1">#                         [18,&#39;Private&#39;,182308,&#39;Bachelors&#39;,10.0,&#39;Never-married&#39;,&#39;?&#39;,&#39;Own-child&#39;,&#39;Other&#39;,&#39;Male&#39;,0,0,23,&#39;United-States&#39;,&#39;&lt;50k&#39;]],</span>
-<span class="c1">#                         columns=df1.columns)</span>
-<span class="c1"># df2 = df1.copy()</span>
-<span class="c1"># df2 = df2.append(new_rows, ignore_index=True)</span>
-<span class="c1"># df2.tail()</span>
-
-<span class="c1"># splits2 = RandomSplitter(valid_pct=0.2)(range_of(df2))</span>
-<span class="c1"># to2 = TabularPandas(df2, procs=[Categorify, FillMissing,Normalize],</span>
-<span class="c1">#                    cat_names = [&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;],</span>
-<span class="c1">#                    cont_names = [&#39;age&#39;, &#39;fnlwgt&#39;, &#39;education-num&#39;],</span>
-<span class="c1">#                    y_names=&#39;salary&#39;,</span>
-<span class="c1">#                    splits=splits2)</span>
-<span class="c1"># dls2 = to2.dataloaders(bs=64)</span>
-<span class="c1"># learn2 = tabular_learner(dls2, metrics=accuracy)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The model from which we want to extract embeddings is trained on a dataset with 7 categorical variables, and 3 continuous ones. It contains embeddings for each of these categorical variables.</p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The whole process takes place in two main steps-</p>
-
-<pre><code>1. Extraction  
-2. Transfer</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Extraction">Extraction<a class="anchor-link" href="#Extraction"> </a></h3><p>This involves storing the embeddings present in the model to a <code>json</code> structure. This <code>json</code> would contain the embeddings related to the categorical variables, and can be later transfered to another model which can also benefit from these categories. It will also be possible to have multiple <code>json</code> files constructed from various models with different categorical variables and then use them together.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To start with the Extraction process, first we need a <code>metadict</code> containing information about the dataset on which the initial model was trained on.<br>
-For this, we can either contruct it manually, or use one of the helper functions provided in the library.</p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">emb_szs1</span> <span class="o">=</span> <span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">emb_szs2</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -201,89 +115,13 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># meta.keys(), meta[&#39;relationship&#39;]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">ni</span><span class="p">,</span> <span class="n">nf</span><span class="p">)</span> <span class="k">for</span> <span class="n">ni</span><span class="p">,</span><span class="n">nf</span> <span class="ow">in</span> <span class="n">emb_szs1</span><span class="p">])</span>
+<span class="n">embed2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">ni</span><span class="p">,</span> <span class="n">nf</span><span class="p">)</span> <span class="k">for</span> <span class="n">ni</span><span class="p">,</span><span class="n">nf</span> <span class="ow">in</span> <span class="n">emb_szs2</span><span class="p">])</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If we want to manually define which categories we want to extract, we can do so by defining a meta dict as shown here -</p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># meta = {</span>
-<span class="c1">#     &quot;categories&quot;:[&#39;workclass&#39;, &#39;education&#39;, &#39;marital-status&#39;, &#39;occupation&#39;, &#39;relationship&#39;, &#39;race&#39;],</span>
-<span class="c1">#     &quot;workclass&quot;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&#39;nan&#39;, &#39; Private&#39;, &#39; Self-emp-inc&#39;, &#39; Self-emp-not-inc&#39;, &#39; State-gov&#39;,</span>
-<span class="c1">#            &#39; Federal-gov&#39;, &#39; Local-gov&#39;, &#39; ?&#39;, &#39; Without-pay&#39;,</span>
-<span class="c1">#            &#39; Never-worked&#39;],</span>
-<span class="c1">#     },</span>
-<span class="c1">#     &#39;education&#39;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&#39;nan&#39;, &#39; Assoc-acdm&#39;, &#39; Masters&#39;, &#39; HS-grad&#39;, &#39; Prof-school&#39;, &#39; 7th-8th&#39;,</span>
-<span class="c1">#        &#39; Some-college&#39;, &#39; 11th&#39;, &#39; Bachelors&#39;, &#39; Assoc-voc&#39;, &#39; 10th&#39;,</span>
-<span class="c1">#        &#39; 9th&#39;, &#39; Doctorate&#39;, &#39; 12th&#39;, &#39; 1st-4th&#39;, &#39; 5th-6th&#39;,</span>
-<span class="c1">#        &#39; Preschool&#39;]</span>
-<span class="c1">#     },</span>
-<span class="c1">#     &quot;marital-status&quot;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&#39;nan&#39;, &#39; Married-civ-spouse&#39;, &#39; Divorced&#39;, &#39; Never-married&#39;, &#39; Widowed&#39;,</span>
-<span class="c1">#        &#39; Married-spouse-absent&#39;, &#39; Separated&#39;, &#39; Married-AF-spouse&#39;]</span>
-<span class="c1">#     },</span>
-<span class="c1">#     &quot;occupation&quot;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&quot;nan&quot;, &#39; Exec-managerial&#39;, &#39; Prof-specialty&#39;, &#39; Other-service&#39;,</span>
-<span class="c1">#        &#39; Handlers-cleaners&#39;, &#39; Craft-repair&#39;, &#39; Adm-clerical&#39;, &#39; Sales&#39;,</span>
-<span class="c1">#        &#39; Machine-op-inspct&#39;, &#39; Transport-moving&#39;, &#39; ?&#39;,</span>
-<span class="c1">#        &#39; Farming-fishing&#39;, &#39; Tech-support&#39;, &#39; Protective-serv&#39;,</span>
-<span class="c1">#        &#39; Priv-house-serv&#39;, &#39; Armed-Forces&#39;]</span>
-<span class="c1">#     },</span>
-<span class="c1">#     &quot;relationship&quot;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&#39;nan&#39;, &#39; Wife&#39;, &#39; Not-in-family&#39;, &#39; Unmarried&#39;, &#39; Husband&#39;, &#39; Own-child&#39;,</span>
-<span class="c1">#        &#39; Other-relative&#39;]</span>
-<span class="c1">#     },</span>
-<span class="c1">#     &quot;race&quot;: {</span>
-<span class="c1">#         &quot;classes&quot;: [&#39;nan&#39;, &#39; White&#39;, &#39; Black&#39;, &#39; Asian-Pac-Islander&#39;, &#39; Amer-Indian-Eskimo&#39;,</span>
-<span class="c1">#        &#39; Other&#39;]</span>
-<span class="c1">#     }</span>
-<span class="c1"># }</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>More information about the metadict format can be found in the docs.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now that we have out meta dictionary, we can start extracting the embeddings, using <code>extractembeds</code>.</p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -295,10 +133,29 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># emb_details[&#39;race&#39;]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed1</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>ModuleList(
+  (0): Embedding(3, 10)
+  (1): Embedding(2, 8)
+)</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -307,7 +164,7 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The embeddings will be stored in a <code>json</code> file in the given <code>path</code>. Now this file can be used to transfer these embeddings to another model.</p>
+<p>We can call the <code>extractembeds</code> function to extract the embeddings. Take a look at the documentation to see other dispatch methods, and details on the parameters.</p>
 
 </div>
 </div>
@@ -319,7 +176,9 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;old_cat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;old_cat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
+<span class="n">embdict</span> <span class="o">=</span> <span class="n">extractembeds</span><span class="p">(</span><span class="n">embed2</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">transfercats</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">allcats</span><span class="o">=</span><span class="n">cats</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -329,13 +188,79 @@ For this, we can either contruct it manually, or use one of the helper functions
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embdict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;old_cat2&#39;: {&#39;classes&#39;: [&#39;a&#39;, &#39;b&#39;],
+  &#39;embeddings&#39;: [[-0.28762340545654297,
+    -0.142189621925354,
+    0.2027226686477661,
+    1.1096185445785522,
+    -0.4540262520313263,
+    -1.346120834350586,
+    0.048871781677007675,
+    0.1740419715642929,
+    0.002095407573506236,
+    0.721653163433075],
+   [-0.9072648882865906,
+    2.674738645553589,
+    -0.8560850024223328,
+    -1.119917869567871,
+    -0.19618849456310272,
+    1.1431224346160889,
+    -0.5177133679389954,
+    -0.6497849822044373,
+    -0.9011525511741638,
+    0.9314191341400146]]},
+ &#39;old_cat3&#39;: {&#39;classes&#39;: [&#39;A&#39;, &#39;B&#39;],
+  &#39;embeddings&#39;: [[2.5755045413970947,
+    -1.3670053482055664,
+    -0.3207620680332184,
+    -1.1824427843093872,
+    0.07631386071443558,
+    0.501422107219696,
+    0.8510317802429199,
+    -0.6687257289886475],
+   [-1.3658113479614258,
+    -0.27968257665634155,
+    0.26537612080574036,
+    0.36773681640625,
+    -0.9940593242645264,
+    0.9408144354820251,
+    0.5295664668083191,
+    -0.5038257241249084]]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now after creating a <code>TabTransfer</code> object, we need to initialize this with either-</p>
-<ol>
-<li>The path of the <code>json</code> which we just constructed.</li>
-<li>The directory which contains multiple <code>json</code> files constructed using the same method, but containing various embeddings for different categorical variables needed to be transferred.</li>
-</ol>
+<h3 id="Transfer">Transfer<a class="anchor-link" href="#Transfer"> </a></h3><p>The transfer process involves using the extracted weights, or a model directly and reusing trained paramters. We can define how this process will take place using the <code>metadict</code> which is a mapping of all the categories (in the current dataset), and contains information about the category it is mapped to (from the previous dataset which was used to train the old model), and how the new classes map to the old classes. We can even choose to map multiple classes to a single one, and in this case the <code>aggfn</code> parameter is used to aggregate the embedding vectors.</p>
 
 </div>
 </div>
@@ -347,7 +272,10 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tabobj.init_from_json(&quot;../data/adults.json&quot;)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">json_file_path</span> <span class="o">=</span> <span class="s2">&quot;../data/jsons/metadict.json&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">j</span><span class="p">:</span>
+     <span class="n">metadict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -357,9 +285,47 @@ For this, we can either contruct it manually, or use one of the helper functions
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadict</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;new_cat1&#39;: {&#39;mapped_cat&#39;: &#39;old_cat2&#39;,
+  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;a&#39;, &#39;b&#39;],
+   &#39;new_class2&#39;: [&#39;b&#39;],
+   &#39;new_class3&#39;: []}},
+ &#39;new_cat2&#39;: {&#39;mapped_cat&#39;: &#39;old_cat3&#39;,
+  &#39;classes_info&#39;: {&#39;new_class1&#39;: [&#39;A&#39;], &#39;new_class2&#39;: []}}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There might be a case where the name of the categorical variables present in the <code>json</code> might differ from the ones present in the new model's learner. For this we can use a <code>mapping_dict</code> which maps old variable names to new ones. This can be created using the <code>mapping</code> function of the object and pass it the categorical values to transfer.</p>
+<p>We take a look at the layer parameters before and after transferring to see if it worked as expected.</p>
 
 </div>
 </div>
@@ -371,31 +337,41 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># mapping_dict = tabobj.mapping([&quot;race&quot;, &quot;workclass&quot;, &quot;gender&quot;])</span>
-<span class="c1"># mapping_dict</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed1</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;0.weight&#39;,
+              tensor([[-0.6940, -0.0337,  0.9491, -1.0520,  0.7804,  2.0246,  0.4242, -1.8351,
+                        0.4660,  1.7667],
+                      [-0.2802,  0.6081, -0.8459, -0.3288, -1.1264,  0.7621,  0.9347,  1.8096,
+                       -0.1998, -0.2541],
+                      [ 0.5706, -0.5213, -0.1398, -0.3742, -1.1951,  1.9640,  0.4132,  2.0365,
+                        0.0655,  0.5189]])),
+             (&#39;1.weight&#39;,
+              tensor([[ 0.9506, -0.0057,  0.2754,  0.8276,  0.8675,  1.2238, -1.5603,  1.0301],
+                      [-0.7315, -0.3735,  0.6059,  0.2659, -0.4918,  1.5501,  0.0221, -0.6199]]))])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As we can see, the transfer process will start after running <code>tabobj.transfer</code> function.</p>
-
-</div>
-</div>
-</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -403,7 +379,54 @@ For this, we can either contruct it manually, or use one of the helper functions
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tabobj.transfer([&quot;race&quot;, &quot;workclass&quot;, &quot;gender&quot;], &quot;embeds&quot;, {&quot;race&quot;:&quot;race&quot;, &quot;workclass&quot;: &quot;workclass&quot;, &quot;gender&quot;:&quot;sex&quot;}, verbose = True)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed2</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;0.weight&#39;,
+              tensor([[-2.8762e-01, -1.4219e-01,  2.0272e-01,  1.1096e+00, -4.5403e-01,
+                       -1.3461e+00,  4.8872e-02,  1.7404e-01,  2.0954e-03,  7.2165e-01],
+                      [-9.0726e-01,  2.6747e+00, -8.5609e-01, -1.1199e+00, -1.9619e-01,
+                        1.1431e+00, -5.1771e-01, -6.4978e-01, -9.0115e-01,  9.3142e-01]])),
+             (&#39;1.weight&#39;,
+              tensor([[ 2.5755, -1.3670, -0.3208, -1.1824,  0.0763,  0.5014,  0.8510, -0.6687],
+                      [-1.3658, -0.2797,  0.2654,  0.3677, -0.9941,  0.9408,  0.5296, -0.5038]]))])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transfer_cats</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;new_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_cat2&quot;</span><span class="p">)</span>
+<span class="n">newcatcols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;new_cat1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_cat2&quot;</span><span class="p">)</span>
+<span class="n">oldcatcols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;old_cat2&quot;</span><span class="p">,</span> <span class="s2">&quot;old_cat3&quot;</span><span class="p">)</span>
+
+<span class="n">newcatdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;new_cat1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;new_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class2&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class3&quot;</span><span class="p">],</span> <span class="s2">&quot;new_cat2&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;new_class1&quot;</span><span class="p">,</span> <span class="s2">&quot;new_class2&quot;</span><span class="p">]}</span>
+<span class="n">oldcatdict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;old_cat2&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="s2">&quot;old_cat3&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]}</span>
+
+<span class="n">transferembeds_</span><span class="p">(</span><span class="n">embed1</span><span class="p">,</span> <span class="n">embdict</span><span class="p">,</span> <span class="n">metadict</span><span class="p">,</span> <span class="n">transfer_cats</span><span class="p">,</span> <span class="n">newcatcols</span><span class="o">=</span><span class="n">newcatcols</span><span class="p">,</span> <span class="n">oldcatcols</span><span class="o">=</span><span class="n">oldcatcols</span><span class="p">,</span> <span class="n">newcatdict</span><span class="o">=</span><span class="n">newcatdict</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -413,6 +436,55 @@ For this, we can either contruct it manually, or use one of the helper functions
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">embed1</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;0.weight&#39;,
+              tensor([[-0.5974,  1.2663, -0.3267, -0.0051, -0.3251, -0.1015, -0.2344, -0.2379,
+                       -0.4495,  0.8265],
+                      [-0.9073,  2.6747, -0.8561, -1.1199, -0.1962,  1.1431, -0.5177, -0.6498,
+                       -0.9012,  0.9314],
+                      [-0.5974,  1.2663, -0.3267, -0.0051, -0.3251, -0.1015, -0.2344, -0.2379,
+                       -0.4495,  0.8265]])),
+             (&#39;1.weight&#39;,
+              tensor([[ 2.5755, -1.3670, -0.3208, -1.1824,  0.0763,  0.5014,  0.8510, -0.6687],
+                      [ 0.6048, -0.8233, -0.0277, -0.4074, -0.4589,  0.7211,  0.6903, -0.5863]]))])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see, the embeddings have been transferred over.</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

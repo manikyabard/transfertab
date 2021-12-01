@@ -2,20 +2,10 @@
 > Allow transfer learning using structured data.
 
 
-```
-# #hide
-# from transfertab.core import *
-# from nbdev.showdoc import *
-# from fastai.tabular.all import *
-# from transfertab.utils import *
-```
-
 ## Install
 
 ```bash
-git clone www.github.com/manikyabard/transfertab
-cd transfertab
-pip install -e .
+pip install transfertab
 ```
 
 ## How to use
@@ -26,137 +16,191 @@ To make use of `transfertab`, you'll need
 	* A pytorch model which contains some embeddings in a layer group.  
 	* Another model to transfer these embeddings to, along with the metadata about the dataset on which this model will be trained.
 
-Here we'll quickly construct a `ModuleList` with a bunch of `Embedding` layers, and see how to transfer it's embeddings.
-
-```
-# #hide
-# path = untar_data(URLs.ADULT_SAMPLE)
-# df1 = pd.read_csv(path/'adult.csv')
-# splits1 = RandomSplitter(valid_pct=0.2)(range_of(df1))
-# to1 = TabularPandas(df1, procs=[Categorify, FillMissing,Normalize],
-#                    cat_names = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
-#                    cont_names = ['age', 'fnlwgt', 'education-num'],
-#                    y_names='salary',
-#                    splits=splits1)
-# dls1 = to1.dataloaders(bs=64)
-# learn1 = tabular_learner(dls1, metrics=accuracy)
-
-# #We add robot to our "race" column
-# new_rows = pd.DataFrame([[49,'Private',101320,'Assoc-acdm',12.0,'Married-civ-spouse','Exec-managerial','Wife','Robot','Female',0,1902,40,'United-States','>=50k'],
-#                         [18,'Private',182308,'Bachelors',10.0,'Never-married','?','Own-child','Other','Male',0,0,23,'United-States','<50k']],
-#                         columns=df1.columns)
-# df2 = df1.copy()
-# df2 = df2.append(new_rows, ignore_index=True)
-# df2.tail()
-
-# splits2 = RandomSplitter(valid_pct=0.2)(range_of(df2))
-# to2 = TabularPandas(df2, procs=[Categorify, FillMissing,Normalize],
-#                    cat_names = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
-#                    cont_names = ['age', 'fnlwgt', 'education-num'],
-#                    y_names='salary',
-#                    splits=splits2)
-# dls2 = to2.dataloaders(bs=64)
-# learn2 = tabular_learner(dls2, metrics=accuracy)
-
-
-```
-
-The model from which we want to extract embeddings is trained on a dataset with 7 categorical variables, and 3 continuous ones. It contains embeddings for each of these categorical variables.
-
 The whole process takes place in two main steps-  
 	1. Extraction  
 	2. Transfer
 
 
 ### Extraction
-This involves storing the embeddings present in the model to a `json` structure. This `json` would contain the embeddings related to the categorical variables, and can be later transfered to another model which can also benefit from these categories. It will also be possible to have multiple `json` files constructed from various models with different categorical variables and then use them together.
+This involves storing the embeddings present in the model to a `JSON` structure. This `JSON` would contain the embeddings related to the categorical variables, and can be later transfered to another model which can also benefit from these categories. It will also be possible to have multiple `JSON` files constructed from various models with different categorical variables and then use them together.
 
-To start with the Extraction process, first we need a `metadict` containing information about the dataset on which the initial model was trained on.  
-For this, we can either contruct it manually, or use one of the helper functions provided in the library.
-
-```
-# df1.head()
-```
+Here we'll quickly construct a `ModuleList` with a bunch of `Embedding` layers, and see how to transfer it's embeddings.
 
 ```
-# meta = extract_meta_from_df(df1)
-# meta.keys(), meta['relationship']
+emb_szs1 = ((3, 10), (2, 8))
+emb_szs2 = ((2, 10), (2, 8))
 ```
 
-If we want to manually define which categories we want to extract, we can do so by defining a meta dict as shown here -
-
+```
+embed1 = nn.ModuleList([nn.Embedding(ni, nf) for ni,nf in emb_szs1])
+embed2 = nn.ModuleList([nn.Embedding(ni, nf) for ni,nf in emb_szs2])
 ```
 
-# meta = {
-#     "categories":['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race'],
-#     "workclass": {
-#         "classes": ['nan', ' Private', ' Self-emp-inc', ' Self-emp-not-inc', ' State-gov',
-#            ' Federal-gov', ' Local-gov', ' ?', ' Without-pay',
-#            ' Never-worked'],
-#     },
-#     'education': {
-#         "classes": ['nan', ' Assoc-acdm', ' Masters', ' HS-grad', ' Prof-school', ' 7th-8th',
-#        ' Some-college', ' 11th', ' Bachelors', ' Assoc-voc', ' 10th',
-#        ' 9th', ' Doctorate', ' 12th', ' 1st-4th', ' 5th-6th',
-#        ' Preschool']
-#     },
-#     "marital-status": {
-#         "classes": ['nan', ' Married-civ-spouse', ' Divorced', ' Never-married', ' Widowed',
-#        ' Married-spouse-absent', ' Separated', ' Married-AF-spouse']
-#     },
-#     "occupation": {
-#         "classes": ["nan", ' Exec-managerial', ' Prof-specialty', ' Other-service',
-#        ' Handlers-cleaners', ' Craft-repair', ' Adm-clerical', ' Sales',
-#        ' Machine-op-inspct', ' Transport-moving', ' ?',
-#        ' Farming-fishing', ' Tech-support', ' Protective-serv',
-#        ' Priv-house-serv', ' Armed-Forces']
-#     },
-#     "relationship": {
-#         "classes": ['nan', ' Wife', ' Not-in-family', ' Unmarried', ' Husband', ' Own-child',
-#        ' Other-relative']
-#     },
-#     "race": {
-#         "classes": ['nan', ' White', ' Black', ' Asian-Pac-Islander', ' Amer-Indian-Eskimo',
-#        ' Other']
-#     }
-# }
+```
+embed1
 ```
 
-More information about the metadict format can be found in the docs.
 
-Now that we have out meta dictionary, we can start extracting the embeddings, using `extractembeds`.
 
-```
-# emb_details = extractembeds(learn1.model, 'embeds', meta, '../data/adult.json')
-# emb_details['race']
-```
 
-The embeddings will be stored in a `json` file in the given `path`. Now this file can be used to transfer these embeddings to another model.
+    ModuleList(
+      (0): Embedding(3, 10)
+      (1): Embedding(2, 8)
+    )
 
-```
-# tabobj = TabTransfer(learn1)
-```
 
-Now after creating a `TabTransfer` object, we need to initialize this with either-  
-1. The path of the `json` which we just constructed.
-2. The directory which contains multiple `json` files constructed using the same method, but containing various embeddings for different categorical variables needed to be transferred.
+
+We can call the `extractembeds` function to extract the embeddings. Take a look at the documentation to see other dispatch methods, and details on the parameters.
 
 ```
-# #skip
-# tabobj.init_from_json("../data/adults.json")
+df = pd.DataFrame({"old_cat1": [1, 2, 3, 4, 5], "old_cat2": ['a', 'b', 'b', 'b', 'a'], "old_cat3": ['A', 'B', 'B', 'B', 'A']})
+cats = ("old_cat2", "old_cat3")
+embdict = extractembeds(embed2, df, transfercats=cats, allcats=cats)
 ```
 
-There might be a case where the name of the categorical variables present in the `json` might differ from the ones present in the new model's learner. For this we can use a `mapping_dict` which maps old variable names to new ones. This can be created using the `mapping` function of the object and pass it the categorical values to transfer.
-
 ```
-# #skip
-# mapping_dict = tabobj.mapping(["race", "workclass", "gender"])
-# mapping_dict
+embdict
 ```
 
-As we can see, the transfer process will start after running `tabobj.transfer` function.
+
+
+
+    {'old_cat2': {'classes': ['a', 'b'],
+      'embeddings': [[-0.28762340545654297,
+        -0.142189621925354,
+        0.2027226686477661,
+        1.1096185445785522,
+        -0.4540262520313263,
+        -1.346120834350586,
+        0.048871781677007675,
+        0.1740419715642929,
+        0.002095407573506236,
+        0.721653163433075],
+       [-0.9072648882865906,
+        2.674738645553589,
+        -0.8560850024223328,
+        -1.119917869567871,
+        -0.19618849456310272,
+        1.1431224346160889,
+        -0.5177133679389954,
+        -0.6497849822044373,
+        -0.9011525511741638,
+        0.9314191341400146]]},
+     'old_cat3': {'classes': ['A', 'B'],
+      'embeddings': [[2.5755045413970947,
+        -1.3670053482055664,
+        -0.3207620680332184,
+        -1.1824427843093872,
+        0.07631386071443558,
+        0.501422107219696,
+        0.8510317802429199,
+        -0.6687257289886475],
+       [-1.3658113479614258,
+        -0.27968257665634155,
+        0.26537612080574036,
+        0.36773681640625,
+        -0.9940593242645264,
+        0.9408144354820251,
+        0.5295664668083191,
+        -0.5038257241249084]]}}
+
+
+
+### Transfer
+The transfer process involves using the extracted weights, or a model directly and reusing trained paramters. We can define how this process will take place using the `metadict` which is a mapping of all the categories (in the current dataset), and contains information about the category it is mapped to (from the previous dataset which was used to train the old model), and how the new classes map to the old classes. We can even choose to map multiple classes to a single one, and in this case the `aggfn` parameter is used to aggregate the embedding vectors.
 
 ```
-# #skip
-# tabobj.transfer(["race", "workclass", "gender"], "embeds", {"race":"race", "workclass": "workclass", "gender":"sex"}, verbose = True)
+json_file_path = "../data/jsons/metadict.json"
+
+with open(json_file_path, 'r') as j:
+     metadict = json.loads(j.read())
 ```
+
+```
+metadict
+```
+
+
+
+
+    {'new_cat1': {'mapped_cat': 'old_cat2',
+      'classes_info': {'new_class1': ['a', 'b'],
+       'new_class2': ['b'],
+       'new_class3': []}},
+     'new_cat2': {'mapped_cat': 'old_cat3',
+      'classes_info': {'new_class1': ['A'], 'new_class2': []}}}
+
+
+
+We take a look at the layer parameters before and after transferring to see if it worked as expected.
+
+```
+embed1.state_dict()
+```
+
+
+
+
+    OrderedDict([('0.weight',
+                  tensor([[-0.6940, -0.0337,  0.9491, -1.0520,  0.7804,  2.0246,  0.4242, -1.8351,
+                            0.4660,  1.7667],
+                          [-0.2802,  0.6081, -0.8459, -0.3288, -1.1264,  0.7621,  0.9347,  1.8096,
+                           -0.1998, -0.2541],
+                          [ 0.5706, -0.5213, -0.1398, -0.3742, -1.1951,  1.9640,  0.4132,  2.0365,
+                            0.0655,  0.5189]])),
+                 ('1.weight',
+                  tensor([[ 0.9506, -0.0057,  0.2754,  0.8276,  0.8675,  1.2238, -1.5603,  1.0301],
+                          [-0.7315, -0.3735,  0.6059,  0.2659, -0.4918,  1.5501,  0.0221, -0.6199]]))])
+
+
+
+```
+embed2.state_dict()
+```
+
+
+
+
+    OrderedDict([('0.weight',
+                  tensor([[-2.8762e-01, -1.4219e-01,  2.0272e-01,  1.1096e+00, -4.5403e-01,
+                           -1.3461e+00,  4.8872e-02,  1.7404e-01,  2.0954e-03,  7.2165e-01],
+                          [-9.0726e-01,  2.6747e+00, -8.5609e-01, -1.1199e+00, -1.9619e-01,
+                            1.1431e+00, -5.1771e-01, -6.4978e-01, -9.0115e-01,  9.3142e-01]])),
+                 ('1.weight',
+                  tensor([[ 2.5755, -1.3670, -0.3208, -1.1824,  0.0763,  0.5014,  0.8510, -0.6687],
+                          [-1.3658, -0.2797,  0.2654,  0.3677, -0.9941,  0.9408,  0.5296, -0.5038]]))])
+
+
+
+```
+transfer_cats = ("new_cat1", "new_cat2")
+newcatcols = ("new_cat1", "new_cat2")
+oldcatcols = ("old_cat2", "old_cat3")
+
+newcatdict = {"new_cat1" : ["new_class1", "new_class2", "new_class3"], "new_cat2" : ["new_class1", "new_class2"]}
+oldcatdict = {"old_cat2" : ["a", "b"], "old_cat3" : ["A", "B"]}
+
+transferembeds_(embed1, embdict, metadict, transfer_cats, newcatcols=newcatcols, oldcatcols=oldcatcols, newcatdict=newcatdict)
+```
+
+```
+embed1.state_dict()
+```
+
+
+
+
+    OrderedDict([('0.weight',
+                  tensor([[-0.5974,  1.2663, -0.3267, -0.0051, -0.3251, -0.1015, -0.2344, -0.2379,
+                           -0.4495,  0.8265],
+                          [-0.9073,  2.6747, -0.8561, -1.1199, -0.1962,  1.1431, -0.5177, -0.6498,
+                           -0.9012,  0.9314],
+                          [-0.5974,  1.2663, -0.3267, -0.0051, -0.3251, -0.1015, -0.2344, -0.2379,
+                           -0.4495,  0.8265]])),
+                 ('1.weight',
+                  tensor([[ 2.5755, -1.3670, -0.3208, -1.1824,  0.0763,  0.5014,  0.8510, -0.6687],
+                          [ 0.6048, -0.8233, -0.0277, -0.4074, -0.4589,  0.7211,  0.6903, -0.5863]]))])
+
+
+
+As we can see, the embeddings have been transferred over.
